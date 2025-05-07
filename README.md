@@ -93,6 +93,7 @@ goinkblog-frontend/
 │   ├── index.js              # 应用入口文件
 │   └── index.css             # 全局基础样式
 ├── package.json              # 项目依赖配置
+├── package-lock.json         # 依赖版本锁定文件
 └── README.md                 # 项目说明文档
 ```
 
