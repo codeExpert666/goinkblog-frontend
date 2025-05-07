@@ -1,0 +1,114 @@
+/* 标签和分类样式 */
+.tags-container {
+  margin-bottom: 12px;
+  height: 70px; /* 固定高度，确保所有卡片保持一致 */
+  display: flex;
+  flex-direction: column;
+  overflow: visible; /* 允许标签在悬停时可见 */
+}
+
+.category-container {
+  margin-bottom: 10px;
+  min-height: 24px; /* 分类标签的最小高度 */
+}
+
+.tags-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  min-height: 28px; /* 标签区域的最小高度 */
+  /* 移除最大高度限制，允许多行标签显示 */
+  flex-grow: 1; /* 允许标签区域占据剩余空间 */
+  overflow: visible; /* 允许标签在悬停时可见 */
+  padding-top: 2px; /* 为标签悬停效果添加顶部空间 */
+  position: relative;
+}
+
+/* 标签组悬停效果 */
+.tags-wrapper a:hover,
+.popover-tags-container a:hover {
+  transform: translateY(-2px);
+  transition: transform 0.2s ease;
+}
+
+/* 弹出窗口标签容器样式 */
+.popover-tags-container {
+  padding: 4px 4px 6px 4px; /* 底部增加空间，为悬停效果预留空间 */
+  overflow: visible; /* 允许标签在悬停时可见 */
+  margin-top: 2px; /* 为悬停效果预留上方空间 */
+}
+
+/* 确保弹出窗口内容可以溢出 */
+.ant-popover-inner-content {
+  overflow: visible !important;
+}
+
+.ant-popover-inner {
+  overflow: visible !important;
+}
+
+/* 分类标签悬停效果 */
+.category-container a:hover {
+  transform: translateY(-2px);
+  transition: transform 0.2s ease;
+}
+
+/* 空分类提示样式 */
+.empty-category-hint {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 8px;
+  height: 24px;
+  border-radius: 4px;
+  font-size: 13px;
+  color: #8c8c8c;
+  background-color: #f5f5f5;
+  border: 1px dashed #d9d9d9;
+  transition: all 0.3s;
+}
+
+.empty-category-hint:hover {
+  color: #595959;
+  border-color: #b5b5b5;
+}
+
+/* 空标签提示样式 */
+.empty-tags-hint {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 10px;
+  height: 22px;
+  border-radius: 16px;
+  font-size: 12px;
+  color: #8c8c8c;
+  background-color: #f5f5f5;
+  border: 1px dashed #d9d9d9;
+  transition: all 0.3s;
+}
+
+.empty-tags-hint:hover {
+  color: #595959;
+  border-color: #b5b5b5;
+}
+
+/* 更多标签提示样式 */
+.more-tags-hint {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 10px;
+  height: 22px;
+  border-radius: 16px;
+  font-size: 12px;
+  color: #722ed1; /* 紫色系，与蓝色区分 */
+  background-color: #f9f0ff; /* 浅紫色背景 */
+  border: 1px solid #d3adf7; /* 紫色边框 */
+  margin-left: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.more-tags-hint:hover {
+  background-color: #efdbff; /* 悬停时的背景色 */
+  border-color: #b37feb; /* 悬停时的边框色 */
+  transform: translateY(-2px); /* 与普通标签一致的悬停效果 */
+}

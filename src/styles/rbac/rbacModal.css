@@ -1,0 +1,81 @@
+/* RBAC模态框样式 */
+.rbac-modal .ant-modal-content {
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 0;
+}
+
+.rbac-modal .ant-modal-header {
+  background: linear-gradient(90deg, #820014 0%, #cf1322 50%, #f5222d 100%);
+  border-bottom: none;
+  padding: 16px 24px;
+}
+
+.rbac-modal .ant-modal-title {
+  color: #fff;
+  font-weight: 500;
+}
+
+.rbac-modal .ant-modal-close {
+  color: #fff;
+}
+
+.rbac-modal .ant-modal-close:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.rbac-modal .ant-modal-body {
+  padding: 24px;
+}
+
+.rbac-modal .ant-modal-footer {
+  border-top: 1px solid #f0f0f0;
+  padding: 16px 24px;
+}
+
+.rbac-test-modal .ant-modal-content {
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 0;
+}
+
+.rbac-test-modal .ant-modal-header {
+  background: linear-gradient(90deg, #820014 0%, #cf1322 50%, #f5222d 100%);
+  border-bottom: none;
+  padding: 16px 24px;
+}
+
+.rbac-test-modal .ant-modal-title {
+  color: #fff;
+  font-weight: 500;
+}
+
+.rbac-test-modal .ant-modal-close {
+  color: #fff;
+}
+
+.rbac-test-modal .ant-modal-close:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.rbac-test-modal .ant-modal-body {
+  padding: 24px;
+}
+
+.rbac-test-modal .ant-modal-footer {
+  border-top: 1px solid #f0f0f0;
+  padding: 16px 24px;
+}
+
+.test-result-container {
+  text-align: center;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.test-result-tag {
+  padding: 8px 16px;
+  font-size: 16px;
+  margin-top: 8px;
+  display: inline-block;
+}

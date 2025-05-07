@@ -1,0 +1,162 @@
+/* 标签管理页面样式 */
+.tag-management {
+  padding: 16px;
+}
+
+/* 返回按钮悬停效果 */
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* 欢迎横幅样式 */
+.tag-welcome-banner {
+  background: linear-gradient(135deg, #722ed1 0%, #eb2f96 100%);
+  border-radius: 8px;
+  padding: 24px 32px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  color: #fff;
+}
+
+/* 标签表格卡片样式 */
+.tag-table-card {
+  border-radius: 8px;
+  border: none;
+  background-color: #fafafa;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin-bottom: 24px;
+}
+
+.tag-table-card .ant-card-body {
+  padding: 20px;
+}
+
+.tag-table-card .ant-card-head {
+  border-bottom: 1px solid #f0f0f0;
+  padding: 0 20px;
+}
+
+.tag-table-card .ant-card-head-title {
+  padding: 16px 0;
+}
+
+/* 表格样式优化 */
+.tag-table {
+  background: #fff;
+  border-radius: 8px;
+}
+
+.tag-table .ant-table-thead > tr > th {
+  background: #f5f5f5;
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: 500;
+}
+
+/* 操作按钮样式 */
+.tag-action-button {
+  transition: all 0.3s;
+}
+
+.tag-action-button:hover {
+  transform: scale(1.1);
+}
+
+/* 添加标签按钮样式 */
+.add-tag-button {
+  border: none;
+  /* background: linear-gradient(90deg, #722ed1 0%, #eb2f96 100%); */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+}
+
+.add-tag-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* 模态框样式 */
+.tag-modal .ant-modal-content {
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 0;
+}
+
+.tag-modal .ant-modal-header {
+  background: linear-gradient(90deg, #722ed1 0%, #eb2f96 100%);
+  border-bottom: none;
+  padding: 16px 24px;
+}
+
+.tag-modal .ant-modal-title {
+  color: #fff;
+  font-weight: 500;
+}
+
+.tag-modal .ant-modal-close {
+  color: #fff;
+}
+
+.tag-modal .ant-modal-close:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.tag-modal .ant-modal-body {
+  padding: 24px;
+}
+
+.tag-modal .ant-modal-footer {
+  border-top: 1px solid #f0f0f0;
+  padding: 16px 24px;
+}
+
+/* 统计卡片样式 */
+.stat-card {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* 响应式布局调整 */
+@media (max-width: 1200px) {
+  /* lg 断点 */
+  .tag-management {
+    padding: 12px;
+  }
+}
+
+@media (max-width: 992px) {
+  /* md 断点 */
+  .tag-welcome-banner {
+    padding: 20px 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* sm 断点 */
+  .tag-welcome-banner {
+    padding: 16px 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  /* xs 断点 */
+  .tag-management {
+    padding: 8px;
+  }
+
+  .tag-welcome-banner {
+    padding: 12px 16px;
+  }
+
+  .tag-welcome-banner .ant-typography {
+    font-size: 20px;
+  }
+}

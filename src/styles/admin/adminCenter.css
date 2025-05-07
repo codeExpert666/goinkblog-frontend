@@ -1,0 +1,274 @@
+/* 管理中心页面样式 */
+.admin-center {
+  padding: 16px;
+}
+
+/* 数据统计卡片样式 */
+.stat-card {
+  height: 100%;
+  border: none;
+  border-radius: 8px;
+  background-color: #fafafa;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.stat-card .ant-card-body {
+  padding: 16px 12px;
+}
+
+.stat-card .ant-statistic-title {
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+/* 管理功能卡片样式 */
+.admin-feature-card {
+  height: 100%;
+  transition: all 0.3s;
+  border: 2px solid #d9d9d9;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.admin-feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  border: 3px solid #1890ff;
+  position: relative;
+  z-index: 1;
+}
+
+.admin-feature-card:hover .ant-card-body {
+  margin: -1px;
+}
+
+.admin-feature-card.disabled {
+  opacity: 0.6;
+  border: 2px solid #d9d9d9;
+}
+
+.admin-feature-card.disabled:hover {
+  transform: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  border: 2px solid #d9d9d9;
+}
+
+.admin-feature-card .feature-icon {
+  font-size: 32px;
+  color: #1890ff;
+  margin-bottom: 8px;
+  transition: all 0.3s;
+}
+
+.admin-feature-card:hover .feature-icon {
+  transform: scale(1.1);
+}
+
+.admin-feature-card.disabled:hover .feature-icon {
+  transform: none;
+}
+
+/* 系统状态卡片样式 */
+.system-status-card {
+  border-radius: 8px;
+  border: none;
+  background-color: #fafafa;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.system-status-card .ant-card-body {
+  padding: 20px;
+}
+
+.system-status-card .ant-statistic-title {
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+/* 响应式布局调整 */
+@media (max-width: 1200px) {
+  /* lg 断点 */
+  .admin-center {
+    padding: 12px;
+  }
+}
+
+/* API访问趋势图表样式 */
+.api-trend-card {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.09);
+  border-radius: 8px;
+  margin-bottom: 24px;
+  background: linear-gradient(to bottom, rgba(255, 241, 230, 0.3) 0%, rgba(255, 255, 255, 1) 100%);
+}
+
+.api-trend-card .recharts-responsive-container {
+  margin: 10px 0;
+}
+
+.api-trend-card .recharts-default-tooltip {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border: 1px solid #e9e9e9 !important;
+  border-radius: 4px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+  padding: 10px !important;
+}
+
+.api-trend-card .recharts-tooltip-label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.api-trend-card .recharts-tooltip-item {
+  margin: 2px 0;
+}
+
+.api-trend-card .recharts-legend-item-text {
+  font-size: 13px;
+}
+
+/* 用户活跃度图表样式 */
+.user-activity-card {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.09);
+  border-radius: 8px;
+  background: linear-gradient(to bottom, rgba(240, 255, 240, 0.3) 0%, rgba(255, 255, 255, 1) 100%);
+}
+
+.user-activity-card .recharts-responsive-container {
+  margin: 10px 0;
+}
+
+.user-activity-card .recharts-default-tooltip {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border: 1px solid #e9e9e9 !important;
+  border-radius: 4px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+  padding: 10px !important;
+}
+
+.user-activity-card .recharts-tooltip-label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.user-activity-card .recharts-tooltip-item {
+  margin: 2px 0;
+}
+
+.user-activity-card .recharts-legend-item-text {
+  font-size: 13px;
+}
+
+/* 文章分类分布卡片样式 */
+.article-category-dist-card {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.09);
+  border-radius: 8px;
+  background: linear-gradient(to bottom, rgba(240, 248, 255, 0.3) 0%, rgba(255, 255, 255, 1) 100%);
+  margin-bottom: 24px;
+}
+
+.article-category-dist-card .recharts-responsive-container {
+  margin: 10px 0;
+}
+
+.article-category-dist-card .recharts-default-tooltip {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border: 1px solid #e9e9e9 !important;
+  border-radius: 4px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+  padding: 10px !important;
+}
+
+.article-category-dist-card .recharts-tooltip-label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.article-category-dist-card .recharts-tooltip-item {
+  margin: 2px 0;
+}
+
+.article-category-dist-card .recharts-legend-item-text {
+  font-size: 13px;
+}
+
+/* 文章创作时间统计卡片样式 */
+.article-creation-time-card {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.09);
+  border-radius: 8px;
+  background: linear-gradient(to bottom, rgba(240, 248, 255, 0.3) 0%, rgba(255, 255, 255, 1) 100%);
+  margin-bottom: 24px;
+}
+
+.article-creation-time-card .recharts-responsive-container {
+  margin: 10px 0;
+}
+
+.article-creation-time-card .recharts-default-tooltip {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border: 1px solid #e9e9e9 !important;
+  border-radius: 4px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+  padding: 10px !important;
+}
+
+.article-creation-time-card .recharts-tooltip-label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.article-creation-time-card .recharts-tooltip-item {
+  margin: 2px 0;
+}
+
+.article-creation-time-card .recharts-legend-item-text {
+  font-size: 13px;
+}
+
+@media (max-width: 992px) {
+  /* md 断点 */
+  .welcome-banner {
+    padding: 20px 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* sm 断点 */
+  .welcome-banner {
+    padding: 16px 20px;
+  }
+
+  .system-actions button {
+    margin-bottom: 8px;
+  }
+}
+
+@media (max-width: 576px) {
+  /* xs 断点 */
+  .admin-center {
+    padding: 8px;
+  }
+
+  .welcome-banner {
+    padding: 12px 16px;
+  }
+
+  .welcome-banner .ant-typography {
+    font-size: 20px;
+  }
+
+  .system-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .system-actions button {
+    margin: 4px 0 !important;
+    width: 80%;
+  }
+}

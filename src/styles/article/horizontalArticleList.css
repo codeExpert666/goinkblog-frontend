@@ -1,0 +1,132 @@
+/* 水平文章列表容器 */
+.horizontal-article-list-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* 加载指示器样式 */
+.article-list-loading-indicator {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 4px 12px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+/* 水平滚动容器 */
+.horizontal-scroll-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 10px 0;
+  /* margin在组件中动态设置，不再在CSS中固定 */
+  -webkit-overflow-scrolling: touch; /* 在iOS上提供更好的滚动体验 */
+  scrollbar-width: thin; /* Firefox */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  min-height: 200px; /* 确保容器有最小高度，避免内容切换时的跳动 */
+
+  /* 隐藏滚动条但保留功能 - Chrome, Safari, Edge */
+  &::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #d9d9d9;
+    border-radius: 3px;
+    border: 2px solid #f0f0f0;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #bfbfbf;
+  }
+}
+
+/* 加载状态的滚动容器 */
+.horizontal-scroll-container.loading {
+  opacity: 0.7;
+  filter: blur(0.5px);
+}
+
+/* 水平文章项 */
+.horizontal-article-item {
+  flex: 0 0 auto;
+  /* width和margin在组件中动态设置，不再在CSS中固定 */
+  transition: transform 0.3s ease;
+  min-width: 250px; /* 确保在大屏幕上不会过宽 */
+}
+
+/* 滚动按钮 */
+.scroll-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.scroll-button:hover {
+  opacity: 1;
+}
+
+.scroll-left {
+  left: -15px;
+}
+
+.scroll-right {
+  right: -15px;
+}
+
+/* 响应式调整 - 与ArticleList组件的grid配置保持一致 */
+/* 注意：基本的宽度现在在组件中通过JS动态计算，这里只提供额外的响应式调整 */
+@media (max-width: 1600px) {
+  /* xl 断点 */
+  .horizontal-article-item {
+    /* 宽度在组件中通过grid.xl动态计算 */
+  }
+}
+
+@media (max-width: 1200px) {
+  /* lg 断点 */
+  .horizontal-article-item {
+    /* 宽度在组件中通过grid.lg动态计算 */
+  }
+}
+
+@media (max-width: 992px) {
+  /* md 断点 */
+  .horizontal-article-item {
+    /* 宽度在组件中通过grid.md动态计算 */
+  }
+}
+
+@media (max-width: 768px) {
+  /* sm 断点 */
+  .horizontal-article-item {
+    /* 宽度在组件中通过grid.sm动态计算 */
+  }
+
+  .scroll-button {
+    display: none; /* 在移动设备上隐藏滚动按钮 */
+  }
+}
+
+@media (max-width: 576px) {
+  /* xs 断点 */
+  .horizontal-article-item {
+    /* 宽度在组件中通过grid.xs动态计算 */
+    min-width: auto; /* 在小屏幕上取消最小宽度限制 */
+  }
+}

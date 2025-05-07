@@ -1,0 +1,410 @@
+/* 日志管理页面样式 */
+.logger-management {
+  padding: 16px;
+}
+
+/* 返回按钮悬停效果 */
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* 欢迎横幅样式 */
+.logger-welcome-banner {
+  background: linear-gradient(135deg, #096dd9 0%, #1890ff 50%, #69c0ff 100%);
+  border-radius: 8px;
+  padding: 24px 32px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  color: #fff;
+}
+
+/* 日志表格卡片样式 */
+.logger-table-card {
+  border-radius: 8px;
+  border: none;
+  background-color: #fafafa;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin-bottom: 24px;
+}
+
+.logger-table-card .ant-card-body {
+  padding: 20px;
+}
+
+.logger-table-card .ant-card-head {
+  border-bottom: 1px solid #f0f0f0;
+  padding: 0 20px;
+}
+
+.logger-table-card .ant-card-head-title {
+  padding: 16px 0;
+}
+
+/* 筛选卡片样式 */
+.logger-filter-card {
+  border-radius: 8px;
+  border: none;
+  background-color: #fafafa;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin-bottom: 24px;
+}
+
+/* 表格样式优化 */
+.logger-table {
+  background: #fff;
+  border-radius: 8px;
+}
+
+.logger-table .ant-table-thead > tr > th {
+  background: #f5f5f5;
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: 500;
+}
+
+/* 日志详情抽屉样式 */
+.logger-detail-drawer .ant-drawer-body {
+  padding: 0;
+  overflow: auto;
+  height: 100%;
+  background-color: #f5f5f5;
+}
+
+/* 日志详情内容样式 */
+.logger-detail-content {
+  background-color: #f5f5f5;
+  min-height: 100%;
+}
+
+/* 日志详情顶部状态栏 */
+.logger-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.logger-detail-header.level-debug {
+  background-color: #f0f5ff;
+  border-bottom: 1px solid #d6e4ff;
+}
+
+.logger-detail-header.level-info {
+  background-color: #e6f7ff;
+  border-bottom: 1px solid #bae7ff;
+}
+
+.logger-detail-header.level-warn {
+  background-color: #fffbe6;
+  border-bottom: 1px solid #ffe58f;
+}
+
+.logger-detail-header.level-error {
+  background-color: #fff2f0;
+  border-bottom: 1px solid #ffccc7;
+}
+
+.logger-detail-header-id,
+.logger-detail-header-time {
+  display: flex;
+  flex-direction: column;
+}
+
+.logger-detail-header-label {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.45);
+  margin-bottom: 4px;
+}
+
+.logger-detail-header-value {
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.85);
+}
+
+/* 日志详情卡片样式 */
+.logger-detail-card {
+  margin: 16px;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* 确保最后一个卡片有足够的底部间距 */
+.logger-detail-content > .logger-detail-card:last-child {
+  margin-bottom: 16px;
+}
+
+.logger-detail-card .ant-card-head {
+  padding: 0 16px;
+  min-height: 40px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.logger-detail-card .ant-card-head-title {
+  padding: 10px 0;
+}
+
+.logger-detail-card .ant-card-body {
+  padding: 16px;
+}
+
+.logger-detail-card-title {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.logger-detail-card-title .anticon {
+  margin-right: 8px;
+  color: #1890ff;
+}
+
+.logger-detail-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* 日志详情项目样式 */
+.logger-detail-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.logger-detail-item-label {
+  width: 100px;
+  flex-shrink: 0;
+  color: rgba(0, 0, 0, 0.65);
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.logger-detail-item-label .anticon {
+  margin-right: 4px;
+}
+
+.logger-detail-item-value {
+  flex: 1;
+  color: rgba(0, 0, 0, 0.85);
+}
+
+/* 日志消息样式 */
+.logger-detail-message {
+  padding: 4px 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(0, 0, 0, 0.85);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* 折叠面板样式 */
+.logger-detail-collapse {
+  margin: 16px;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.logger-detail-collapse .ant-collapse-header {
+  padding: 12px 16px !important;
+  background-color: #f9f9f9;
+}
+
+.logger-detail-collapse-header {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.logger-detail-collapse-header .anticon {
+  margin-right: 8px;
+  color: #1890ff;
+}
+
+.logger-detail-collapse-panel .ant-collapse-content-box {
+  padding: 0 !important;
+}
+
+/* 错误堆栈面板特殊样式 */
+.logger-detail-error-collapse .ant-collapse-header {
+  background-color: #fff2f0 !important;
+}
+
+.logger-detail-error-header .anticon {
+  color: #f5222d !important;
+}
+
+/* 代码容器样式 */
+.logger-detail-code-container {
+  position: relative;
+}
+
+.logger-detail-code-actions {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 4px;
+  padding: 2px;
+}
+
+.logger-detail-code {
+  margin: 0;
+  padding: 16px;
+  white-space: pre-wrap;
+  word-break: break-all;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+  font-size: 13px;
+  line-height: 1.5;
+  max-height: 250px;
+  overflow: auto;
+}
+
+.logger-detail-data {
+  background-color: #f5f5f5;
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.logger-detail-stack {
+  background-color: #fff2f0;
+  color: #f5222d;
+}
+
+/* JSON 查看器样式 */
+.json-viewer-container {
+  padding: 0;
+  border-radius: 4px;
+  overflow: auto;
+  max-height: 400px;
+}
+
+
+
+/* JSON解析信息提示 */
+.json-parsing-info {
+  font-size: 12px;
+  color: #1890ff;
+  background-color: #e6f7ff;
+  padding: 8px 12px;
+  border-radius: 4px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.json-parsing-info-warning {
+  color: #faad14;
+  background-color: #fffbe6;
+}
+
+/* 嵌套JSON字段高亮 */
+.nested-json-field {
+  background-color: rgba(24, 144, 255, 0.1);
+  border-radius: 2px;
+}
+
+/* 自定义 ReactJson 组件样式 */
+.json-viewer-container ul {
+  padding-left: 1em !important;
+}
+
+.json-viewer-container .string-value {
+  color: #c41d7f !important;
+}
+
+.json-viewer-container .number-value {
+  color: #1890ff !important;
+}
+
+.json-viewer-container .boolean-value {
+  color: #fa8c16 !important;
+}
+
+.json-viewer-container .null-value {
+  color: #bfbfbf !important;
+}
+
+.json-viewer-container .object-key {
+  color: #333 !important;
+  font-weight: 500 !important;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .json-viewer-container {
+    max-height: 200px;
+  }
+
+  .logger-detail-code {
+    max-height: 150px;
+  }
+}
+
+/* 日志级别标签样式 */
+.level-tag {
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.level-debug {
+  background: #f0f5ff;
+  color: #2f54eb;
+  border: 1px solid #adc6ff;
+}
+
+.level-info {
+  background: #e6f7ff;
+  color: #1890ff;
+  border: 1px solid #91d5ff;
+}
+
+.level-warn {
+  background: #fffbe6;
+  color: #faad14;
+  border: 1px solid #ffe58f;
+}
+
+.level-error {
+  background: #fff2f0;
+  color: #f5222d;
+  border: 1px solid #ffccc7;
+}
+
+/* 空态样式 */
+.logger-empty {
+  padding: 48px 0;
+  text-align: center;
+}
+
+/* 响应式布局调整 */
+@media (max-width: 1200px) {
+  /* lg 断点 */
+  .logger-management {
+    padding: 12px;
+  }
+}
+
+@media (max-width: 992px) {
+  /* md 断点 */
+  .logger-welcome-banner {
+    padding: 20px 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* sm 断点 */
+  .logger-welcome-banner {
+    padding: 16px 20px;
+  }
+}

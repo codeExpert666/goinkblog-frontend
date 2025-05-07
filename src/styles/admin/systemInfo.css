@@ -1,0 +1,94 @@
+/* 系统信息页面样式 */
+
+/* 系统信息页面欢迎横幅样式 */
+.system-info-welcome-banner {
+  background: linear-gradient(135deg, #1890ff 0%, #52c41a 100%);
+  border-radius: 8px;
+  padding: 24px 32px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  color: #fff;
+}
+
+/* 系统信息卡片样式 */
+.system-info-card {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin-bottom: 20px;
+}
+
+.system-info-card .ant-descriptions-bordered .ant-descriptions-item-label {
+  background-color: #f5f5f5;
+  font-weight: 500;
+}
+
+.system-info-card .ant-descriptions-bordered .ant-descriptions-item-content {
+  padding: 12px 24px;
+}
+
+.system-info-badge {
+  margin-right: 8px;
+}
+
+.system-info-item {
+  align-items: center;
+}
+
+.system-info-icon {
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+/* CPU信息样式 */
+.cpu-info-box {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.cpu-info-box .ant-descriptions {
+  margin-bottom: 16px;
+}
+
+.cpu-info-box .ant-descriptions-bordered .ant-descriptions-item-label {
+  width: 120px;
+  background-color: #f5f5f5;
+  font-weight: 500;
+}
+
+.cpu-chart-container {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  padding: 16px;
+  height: 100%;
+}
+
+/* 让CPU卡片在小屏幕上美观 */
+@media (max-width: 992px) {
+  .cpu-chart-container {
+    margin-top: 16px;
+    height: 250px;
+  }
+}
+
+/* 返回按钮悬停效果 */
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* GO运行时信息卡片样式 */
+.go-runtime-info-card {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* 磁盘信息卡片样式 */
+.disk-info-card {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}

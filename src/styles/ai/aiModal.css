@@ -1,0 +1,34 @@
+/* AI模态框样式 */
+.ai-modal .ant-modal-content {
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 0;
+}
+
+.ai-modal .ant-modal-header {
+  background: linear-gradient(90deg, #722ed1 0%, #1890ff 100%);
+  border-bottom: none;
+  padding: 16px 24px;
+}
+
+.ai-modal .ant-modal-title {
+  color: #fff;
+  font-weight: 500;
+}
+
+.ai-modal .ant-modal-close {
+  color: #fff;
+}
+
+.ai-modal .ant-modal-close:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.ai-modal .ant-modal-body {
+  padding: 24px;
+}
+
+.ai-modal .ant-modal-footer {
+  border-top: 1px solid #f0f0f0;
+  padding: 16px 24px;
+}

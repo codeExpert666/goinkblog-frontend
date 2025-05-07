@@ -1,0 +1,160 @@
+/* 自定义代码高亮样式 */
+
+/* 确保代码块容器样式正确 */
+.article-markdown-content pre {
+  position: relative;
+  background-color: #282c34 !important; /* 暗色背景 */
+  border-radius: 6px;
+  margin: 16px 0;
+  overflow: auto;
+  padding: 1em !important; /* 默认padding，无语言标识时使用 */
+  color: #abb2bf !important; /* 亮色文本 */
+}
+
+/* 有语言标识的代码块使用特殊padding */
+.article-markdown-content pre[class*="language-"] {
+  padding: 2.2em 1em 1em 1em !important;
+}
+
+/* 确保 highlight.js 基础样式生效 */
+.article-markdown-content pre code,
+.article-markdown-content .hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0;
+  color: #abb2bf !important;
+  background: transparent !important;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  line-height: 1.5;
+}
+
+/* 强制应用内联代码样式 */
+.article-markdown-content code:not([class*="language-"]) {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #e06c75;
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+
+/* One Dark Pro 风格的语法高亮 - 颜色更鲜明 */
+.article-markdown-content .hljs-keyword,
+.article-markdown-content .hljs-operator {
+  color: #c678dd !important; /* 紫色 */
+}
+
+.article-markdown-content .hljs-function,
+.article-markdown-content .hljs-params {
+  color: #abb2bf !important;
+}
+
+.article-markdown-content .hljs-literal,
+.article-markdown-content .hljs-number,
+.article-markdown-content .hljs-tag .hljs-attr,
+.article-markdown-content .hljs-template-variable,
+.article-markdown-content .hljs-variable {
+  color: #d19a66 !important; /* 橙色 */
+}
+
+.article-markdown-content .hljs-doctag,
+.article-markdown-content .hljs-regexp,
+.article-markdown-content .hljs-string {
+  color: #98c379 !important; /* 绿色 */
+}
+
+.article-markdown-content .hljs-title,
+.article-markdown-content .hljs-name,
+.article-markdown-content .hljs-section,
+.article-markdown-content .hljs-selector-id,
+.article-markdown-content .hljs-title.class_,
+.article-markdown-content .hljs-title.function_ {
+  color: #61afef !important; /* 蓝色 */
+}
+
+/* 确保这些样式优先级足够高 */
+.article-markdown-content .hljs-addition,
+.article-markdown-content .hljs-attribute,
+.article-markdown-content .hljs-built_in,
+.article-markdown-content .hljs-builtin-name,
+.article-markdown-content .hljs-selector-attr,
+.article-markdown-content .hljs-selector-class,
+.article-markdown-content .hljs-tag {
+  color: #e06c75 !important; /* 红色 */
+}
+
+.article-markdown-content .hljs-comment,
+.article-markdown-content .hljs-deletion,
+.article-markdown-content .hljs-meta,
+.article-markdown-content .hljs-quote {
+  color: #7f848e !important; /* 灰色 */
+  font-style: italic;
+}
+
+.hljs-attr,
+.hljs-attribute,
+.hljs-name,
+.hljs-property,
+.hljs-selector-class {
+  color: #e36209;
+}
+
+.hljs-comment,
+.hljs-meta,
+.hljs-quote {
+  color: #6a737d;
+  font-style: italic;
+}
+
+/* 确保暗色主题也有合适的高亮 */
+@media (prefers-color-scheme: dark) {
+  pre {
+    background-color: #282c34;
+  }
+
+  .hljs {
+    color: #abb2bf;
+  }
+
+  .hljs-keyword,
+  .hljs-selector-tag,
+  .hljs-subst {
+    color: #f92672;
+    font-weight: normal;
+  }
+
+  .hljs-literal,
+  .hljs-number,
+  .hljs-tag .hljs-attr,
+  .hljs-template-variable,
+  .hljs-variable {
+    color: #ae81ff;
+  }
+
+  .hljs-doctag,
+  .hljs-string {
+    color: #e6db74;
+  }
+
+  .hljs-section,
+  .hljs-selector-id,
+  .hljs-title,
+  .hljs-class .hljs-title,
+  .hljs-title.class_,
+  .hljs-title.function_ {
+    color: #a6e22e;
+    font-weight: normal;
+  }
+
+  .hljs-attr,
+  .hljs-attribute,
+  .hljs-name,
+  .hljs-property,
+  .hljs-selector-class {
+    color: #fd971f;
+  }
+
+  .hljs-comment,
+  .hljs-meta,
+  .hljs-quote {
+    color: #75715e;
+  }
+}

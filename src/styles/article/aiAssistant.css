@@ -1,0 +1,604 @@
+/* AI助手样式 */
+/* 提示气泡样式 */
+.ai-assistant-tooltip {
+  position: fixed;
+  right: 92px;
+  bottom: 36px;
+  max-width: 260px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  padding: 12px 16px;
+  z-index: 999;
+  animation: tooltip-bounce 0.5s ease-out;
+  transform-origin: right bottom;
+}
+
+.ai-assistant-tooltip::after {
+  content: '';
+  position: absolute;
+  right: -10px;
+  bottom: 20px;
+  border-width: 10px 0 10px 10px;
+  border-style: solid;
+  border-color: transparent transparent transparent white;
+}
+
+.ai-assistant-tooltip-title {
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #1890ff;
+  display: flex;
+  align-items: center;
+}
+
+.ai-assistant-tooltip-title .anticon {
+  margin-right: 6px;
+}
+
+.ai-assistant-tooltip-content {
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.ai-assistant-tooltip-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  color: #999;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.ai-assistant-tooltip-close:hover {
+  color: #1890ff;
+}
+
+.ai-assistant-tooltip-button {
+  font-size: 12px;
+  background-color: #1890ff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.ai-assistant-tooltip-button:hover {
+  background-color: #40a9ff;
+}
+
+@keyframes tooltip-bounce {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* 悬浮按钮样式 */
+.ai-assistant-float-button {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #1890ff;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s;
+  z-index: 1000;
+}
+
+.ai-assistant-float-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.ai-assistant-float-button .anticon {
+  font-size: 28px;
+}
+
+/* 悬浮面板样式 */
+.ai-assistant-float-panel {
+  position: fixed;
+  right: 24px;
+  bottom: 88px;
+  width: 380px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  z-index: 1000;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  max-height: 70vh;
+}
+
+.ai-assistant-float-panel.hidden {
+  transform: translateY(100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* 面板标题栏 */
+.ai-assistant-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  background-color: #1890ff;
+  color: white;
+}
+
+.ai-assistant-panel-header-left {
+  display: flex;
+  align-items: center;
+}
+
+.ai-assistant-panel-header-left .anticon {
+  margin-right: 8px;
+  font-size: 18px;
+}
+
+.ai-assistant-panel-header-left h3 {
+  margin: 0;
+  font-size: 16px;
+  color: white;
+}
+
+.ai-assistant-panel-header-right {
+  display: flex;
+  gap: 8px;
+}
+
+.ai-assistant-panel-header-right button {
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  border-radius: 4px;
+}
+
+.ai-assistant-panel-header-right button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* 面板内容区 */
+.ai-assistant-panel-content {
+  flex: 1;
+  overflow: auto;
+  padding: 16px;
+}
+
+.ai-assistant-title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.ai-assistant-title .anticon {
+  margin-right: 8px;
+  font-size: 24px;
+  color: #1890ff;
+}
+
+.ai-assistant-title h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.ai-assistant-section {
+  margin-bottom: 24px;
+}
+
+.ai-assistant-section-title {
+  font-size: 16px;
+  margin-bottom: 12px;
+  border-left: 3px solid #1890ff;
+  padding-left: 8px;
+}
+
+.ai-assistant-card {
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.ai-assistant-card:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.09);
+}
+
+.ai-assistant-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+}
+
+.ai-assistant-loading p {
+  margin-top: 16px;
+  color: #999;
+}
+
+.ai-assistant-content-container {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.ai-assistant-streaming-content {
+  border: 1px solid #eee;
+  border-radius: 4px;
+  padding: 12px;
+  min-height: 100px;
+  max-height: 200px;
+  overflow-y: auto;
+  background-color: #fafafa;
+  white-space: pre-wrap;
+  font-size: 13px;
+  position: relative;
+}
+
+.ai-assistant-autoscroll-toggle {
+  position: sticky;
+  float: right;
+  right: 10px;
+  bottom: 10px;
+  border-radius: 4px;
+  background-color: rgba(240, 240, 240, 0.9);
+  color: #333;
+  padding: 3px 6px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  z-index: 100;
+  backdrop-filter: blur(2px);
+  border: 1px solid #e0e0e0;
+  user-select: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-top: -35px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+.ai-assistant-autoscroll-toggle:hover {
+  background-color: rgba(248, 248, 248, 0.95);
+}
+
+.ai-assistant-autoscroll-toggle.active {
+  color: #1890ff;
+  border-color: #1890ff;
+}
+
+.ai-assistant-autoscroll-toggle .anticon {
+  margin-right: 4px;
+}
+
+/* 暗色主题 */
+@media (prefers-color-scheme: dark) {
+  .ai-assistant-autoscroll-toggle {
+    background-color: rgba(45, 45, 45, 0.85);
+    color: #ddd;
+    border-color: #444;
+  }
+
+  .ai-assistant-autoscroll-toggle:hover {
+    background-color: rgba(50, 50, 50, 0.95);
+  }
+
+  .ai-assistant-autoscroll-toggle.active {
+    color: #177ddc;
+    border-color: #177ddc;
+  }
+}
+
+.ai-assistant-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* 悬浮窗版本中缩小按钮尺寸 */
+.ai-assistant-float-panel .ant-btn {
+  font-size: 12px;
+  padding: 0 10px;
+  height: 28px;
+}
+
+/* 停止按钮样式 */
+.ai-assistant-float-panel .ant-btn-dangerous {
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background-color: #ff4d4f;
+  color: white;
+  border-color: #ff4d4f;
+  transition: all 0.3s;
+}
+
+.ai-assistant-float-panel .ant-btn-dangerous:hover {
+  background-color: #ff7875;
+  border-color: #ff7875;
+}
+
+.ai-assistant-float-panel .ant-btn-dangerous:active {
+  background-color: #cf1322;
+  border-color: #cf1322;
+}
+
+/* 暗色主题下的停止按钮 */
+@media (prefers-color-scheme: dark) {
+  .ai-assistant-float-panel .ant-btn-dangerous {
+    background-color: #a8071a;
+    border-color: #a8071a;
+  }
+
+  .ai-assistant-float-panel .ant-btn-dangerous:hover {
+    background-color: #cf1322;
+    border-color: #cf1322;
+  }
+
+  .ai-assistant-float-panel .ant-btn-dangerous:active {
+    background-color: #820014;
+    border-color: #820014;
+  }
+}
+
+/* 悬浮窗中标签样式调整 */
+.ai-assistant-float-panel .ai-assistant-tag {
+  padding: 3px 8px !important;
+  font-size: 12px !important;
+  margin: 3px !important;
+}
+
+/* 增加悬浮效果 */
+.ai-assistant-float-panel {
+  animation: ai-assistant-float-in 0.3s ease-out;
+}
+
+@keyframes ai-assistant-float-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 按钮脉动动画 */
+.ai-assistant-float-button {
+  animation: ai-assistant-pulse 2s infinite;
+}
+
+/* 增强版脉动动画 - 当firstVisit为true时应用 */
+.ai-assistant-float-button.first-visit {
+  animation: ai-assistant-pulse 2s infinite, ai-assistant-attention 5s ease-in-out 1s;
+  /* 移除红色背景，保持一致的蓝色 */
+}
+
+@keyframes ai-assistant-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(24, 144, 255, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(24, 144, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(24, 144, 255, 0);
+  }
+}
+
+/* 移除增强版脉动动画，不再需要 */
+
+@keyframes ai-assistant-attention {
+  0%, 100% {
+    transform: scale(1);
+  }
+  5%, 15%, 25% {
+    transform: scale(1.2);
+  }
+  10%, 20%, 30% {
+    transform: scale(1);
+  }
+}
+
+.ai-assistant-tag {
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.ai-assistant-tag:hover {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.ai-assistant-title-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ai-assistant-title-item {
+  padding: 8px;
+  margin-bottom: 8px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.ai-assistant-title-item:hover {
+  background-color: #f0f7ff;
+  border-color: #91caff;
+}
+
+.ai-assistant-title-item.selected {
+  background-color: #e6f7ff;
+  border-color: #1890ff;
+}
+
+/* Alert提示框样式美化 */
+/* 信息提示框（蓝色） */
+.ai-assistant-info-alert {
+  border-radius: 8px !important;
+  /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important; */
+  border: none !important;
+  background-color: #e6f7ff !important;
+  /* border-left: 4px solid #1890ff !important; */
+  padding: 14px 16px !important;
+  transition: all 0.3s ease !important;
+}
+
+.ai-assistant-info-alert .ant-alert-icon {
+  color: #1890ff !important;
+  font-size: 18px !important;
+  /* 调整图标与标题垂直对齐 */
+  position: relative !important;
+  top: 1px !important;
+}
+
+.ai-assistant-info-alert .ant-alert-content {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+}
+
+.ai-assistant-info-alert .ant-alert-message {
+  color: #1890ff !important;
+  font-weight: 600 !important;
+  font-size: 15px !important;
+  margin-bottom: 6px !important;
+  line-height: 1.4 !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.ai-assistant-info-alert .ant-alert-description {
+  color: #555 !important;
+  line-height: 1.6 !important;
+  font-size: 13px !important;
+}
+
+/* 警告提示框（黄色） */
+.ai-assistant-warning-alert {
+  border-radius: 8px !important;
+  /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important; */
+  border: none !important;
+  background-color: #fffbe6 !important;
+  /* border-left: 4px solid #faad14 !important; */
+  padding: 14px 16px !important;
+  transition: all 0.3s ease !important;
+  margin-bottom: 16px !important;
+}
+
+.ai-assistant-warning-alert .ant-alert-icon {
+  color: #faad14 !important;
+  font-size: 18px !important;
+  /* 调整图标与标题垂直对齐 */
+  position: relative !important;
+  top: 1px !important;
+}
+
+.ai-assistant-warning-alert .ant-alert-content {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+}
+
+.ai-assistant-warning-alert .ant-alert-message {
+  color: #d48806 !important;
+  font-weight: 600 !important;
+  font-size: 15px !important;
+  margin-bottom: 6px !important;
+  line-height: 1.4 !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.ai-assistant-warning-alert .ant-alert-description {
+  color: #5e5e5e !important;
+  line-height: 1.6 !important;
+  font-size: 13px !important;
+}
+
+/* 统一Alert组件结构样式 */
+.ai-assistant-info-alert .ant-alert-with-description,
+.ai-assistant-warning-alert .ant-alert-with-description {
+  display: flex !important;
+  align-items: flex-start !important;
+}
+
+/* 调整Alert组件的图标和内容对齐 */
+.ai-assistant-info-alert .ant-alert-with-description .ant-alert-icon,
+.ai-assistant-warning-alert .ant-alert-with-description .ant-alert-icon {
+  margin-top: 2px !important;
+  margin-right: 12px !important;
+}
+
+/* 适应暗色主题 */
+@media (prefers-color-scheme: dark) {
+  .ai-assistant-streaming-content {
+    background-color: #1f1f1f;
+    border-color: #303030;
+  }
+
+  .ai-assistant-title-item:hover {
+    background-color: #111d2c;
+    border-color: #177ddc;
+  }
+
+  .ai-assistant-title-item.selected {
+    background-color: #111b26;
+    border-color: #177ddc;
+  }
+
+  /* 暗色主题下的Alert样式 */
+  .ai-assistant-info-alert {
+    background-color: #111d2c !important;
+    border-left-color: #177ddc !important;
+  }
+
+  .ai-assistant-info-alert .ant-alert-message {
+    color: #177ddc !important;
+  }
+
+  .ai-assistant-info-alert .ant-alert-description {
+    color: #a6a6a6 !important;
+  }
+
+  .ai-assistant-warning-alert {
+    background-color: #2b2111 !important;
+    border-left-color: #d8bd14 !important;
+  }
+
+  .ai-assistant-warning-alert .ant-alert-message {
+    color: #d8bd14 !important;
+  }
+
+  .ai-assistant-warning-alert .ant-alert-description {
+    color: #a6a6a6 !important;
+  }
+}

@@ -1,0 +1,212 @@
+.article-card {
+  height: 100%;
+  transition: all 0.3s;
+  border: 2px solid #d9d9d9;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.article-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  border: 3px solid #1890ff;
+  position: relative;
+  z-index: 0; /* 确保悬停时卡片不会超过顶部状态栏 */
+}
+
+.article-card:hover .ant-card-cover {
+  margin: -3px -3px 0;
+}
+
+.article-card:hover .ant-card-actions {
+  margin: 0 -3px -3px;
+  border-radius: 0 0 5px 5px;
+}
+
+.article-card:hover .article-author-info {
+  border-radius: 0 0 5px 5px;
+}
+
+/* 调整Meta组件中h4标题的上下边距 */
+.article-card .ant-card-meta-title h4.ant-typography {
+  margin-top: 0px;
+  margin-bottom: 8px;
+  min-height: 26px; /* 确保标题区域高度一致，一行文本高度 */
+  display: flex;
+  align-items: center;
+}
+
+/* 确保卡片内容区域与边框一致 */
+.article-card .ant-card-body {
+  padding-top: 0px;
+  padding-right: 24px;
+  padding-bottom: 20px;
+  padding-left: 24px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 确保卡片操作区域与边框一致 */
+.article-card .ant-card-actions {
+  border-top: none;
+  background: transparent;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* 文章作者信息样式 */
+.article-author-info {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 8px 0;
+  border-top: 1px solid #f0f0f0;
+  margin-top: 8px;
+  font-size: 12px;
+  color: #8c8c8c;
+  background-color: #fafafa;
+}
+
+/* 确保卡片操作区域中的最后一个元素占据全宽 */
+.article-card .ant-card-actions > li:last-child {
+  width: 100% !important;
+  margin: 0;
+}
+
+/* 其他操作按钮平均占据剩余空间 */
+.article-card .ant-card-actions > li:not(:last-child) {
+  margin: 0;
+  width: auto !important;
+  flex: 1;
+}
+
+/* 确保卡片封面图片的圆角与卡片一致 */
+.article-card .ant-card-cover {
+  overflow: hidden;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  margin: -2px -2px 0;
+}
+
+.article-card .ant-card-cover img {
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.article-card-small {
+  font-size: 0.9em;
+}
+
+.article-card-small .ant-card-body {
+  padding: 12px;
+}
+
+.draft-article-card {
+  border-style: dashed;
+}
+
+.draft-article-card:hover {
+  border: 3px dashed #1890ff;
+  z-index: 0;
+}
+
+.draft-article-card:hover .ant-card-cover {
+  margin: -3px -3px 0;
+}
+
+.draft-article-card:hover .ant-card-actions {
+  margin: 0 -3px -3px;
+  border-radius: 0 0 5px 5px;
+}
+
+.draft-article-card:hover .article-author-info {
+  border-radius: 0 0 5px 5px;
+}
+
+.hot-articles-section,
+.latest-articles-section {
+  margin-bottom: 24px;
+  background-color: #fff;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  overflow: visible; /* 确保卡片悬停效果不被截断 */
+}
+
+.hot-articles-section .ant-card,
+.latest-articles-section .ant-card {
+  height: 100%;
+}
+
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  padding-top: 8px; /* 为悬停效果留出空间 */
+  padding-bottom: 10px;
+  margin: 0;
+  width: 100%;
+}
+
+.article-grid-item {
+  padding-top: 5px; /* 为悬停效果留出空间 */
+  width: 100%;
+  height: 100%; /* 确保网格项高度一致 */
+  display: flex;
+}
+
+/* 确保卡片内容区域的一致性 */
+.article-card .ant-card-meta {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.article-card .ant-card-meta-detail {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.article-card .ant-card-meta-description {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 1200px) {
+  /* lg 断点 */
+  .articles-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  /* md 断点 */
+  .articles-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  /* sm 断点 */
+  .articles-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  /* xs 断点 */
+  .hot-articles-section,
+  .latest-articles-section {
+    padding: 12px;
+  }
+
+  .articles-grid {
+    grid-template-columns: 1fr;
+  }
+}

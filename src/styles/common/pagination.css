@@ -1,0 +1,13 @@
+/* 分页组件居中显示样式 */
+.centered-pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+/* 确保分页组件在较小屏幕上也能正常布局 */
+@media (max-width: 576px) {
+  .centered-pagination {
+    flex-wrap: wrap;
+  }
+}

@@ -1,0 +1,261 @@
+/* 分类分布样式 */
+.category-distribution-section {
+  margin-top: 20px;
+  padding: 24px;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  position: relative;
+  overflow: hidden;
+}
+
+/* 添加背景装饰 */
+.category-distribution-section::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(114, 46, 209, 0.05) 0%, rgba(114, 46, 209, 0) 70%);
+  border-radius: 50%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.category-distribution-section::after {
+  content: '';
+  position: absolute;
+  bottom: -30px;
+  left: -30px;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(24, 144, 255, 0.05) 0%, rgba(24, 144, 255, 0) 70%);
+  border-radius: 50%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.category-distribution-section:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px);
+}
+
+/* GitHub风格的语言分布条 - 添加动画效果 */
+.github-style-bar {
+  width: 100%;
+  height: 20px; /* 增加高度，使分类条更加明显 */
+  display: flex;
+  border-radius: 8px; /* 增加圆角 */
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 增强阴影效果 */
+  margin: 10px 0; /* 增加上下间距 */
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.05); /* 添加细边框 */
+}
+
+.category-segment {
+  height: 100%;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+}
+
+.category-segment:hover {
+  opacity: 0.9;
+  transform: scaleY(1.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1; /* 确保悬停时在其他段上方 */
+}
+
+/* 添加渐变效果 */
+.category-segment::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%);
+  pointer-events: none;
+}
+
+.category-segment::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shimmer 2.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* 分类图例样式 - 添加动画和交互效果 */
+.category-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+  row-gap: 4px; /* 减小行间距 */
+  justify-content: center; /* 添加居中显示 */
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  margin-bottom: 0; /* 移除底部外边距 */
+  padding: 3px 8px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.legend-item:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.color-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 4px;
+  display: inline-block;
+  transition: all 0.3s ease;
+  flex-shrink: 0; /* 防止在小屏幕上被压缩 */
+}
+
+.legend-item:hover .color-dot {
+  transform: scale(1.2);
+}
+
+.category-name {
+  margin-right: 4px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100px; /* 限制名称宽度，防止过长 */
+  flex: 1; /* 允许名称占据剩余空间 */
+}
+
+.legend-item:hover .category-name {
+  color: #1890ff;
+}
+
+.category-percent {
+  color: #666;
+  margin-right: 2px;
+  font-size: 10px;
+  flex-shrink: 0; /* 防止在小屏幕上被压缩 */
+}
+
+.category-count {
+  color: #999;
+  font-size: 10px;
+  flex-shrink: 0; /* 防止在小屏幕上被压缩 */
+}
+
+/* 响应式布局调整 */
+@media (max-width: 768px) {
+  .category-distribution-section {
+    padding: 15px;
+  }
+
+  .category-legend {
+    gap: 6px;
+    row-gap: 3px; /* 在中等屏幕上进一步减小行间距 */
+    justify-content: center; /* 保持居中显示 */
+  }
+
+  .github-style-bar {
+    height: 18px; /* 在中等屏幕上稍微调整高度 */
+    margin: 8px 0;
+  }
+
+  .legend-item {
+    padding: 2px 6px;
+    font-size: 11px;
+    flex-basis: calc(33.33% - 6px); /* 改为三列布局 */
+  }
+}
+
+@media (max-width: 576px) {
+  .category-distribution-section {
+    padding: 10px;
+  }
+
+  .category-legend {
+    gap: 4px;
+    row-gap: 2px; /* 在小屏幕上最小化行间距 */
+    justify-content: center; /* 保持居中显示 */
+  }
+
+  .legend-item {
+    flex-basis: calc(50% - 4px); /* 在小屏幕上改为两列 */
+    padding: 2px 4px;
+    font-size: 10px;
+  }
+
+  .github-style-bar {
+    height: 16px; /* 在小屏幕上稍微减小高度，但仍保持足够明显 */
+    margin: 8px 0;
+  }
+}
+
+/* 入场动画 */
+.fade-in {
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 分类项目入场动画 */
+.category-item-enter {
+  animation: categoryEnter 0.5s ease-out forwards;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+@keyframes categoryEnter {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 为每个分类项目设置不同的动画延迟 */
+.category-item-delay-1 { animation-delay: 0.1s; }
+.category-item-delay-2 { animation-delay: 0.2s; }
+.category-item-delay-3 { animation-delay: 0.3s; }
+.category-item-delay-4 { animation-delay: 0.4s; }
+.category-item-delay-5 { animation-delay: 0.5s; }
+.category-item-delay-6 { animation-delay: 0.6s; }
+.category-item-delay-7 { animation-delay: 0.7s; }
+.category-item-delay-8 { animation-delay: 0.8s; }
+.category-item-delay-9 { animation-delay: 0.9s; }
+.category-item-delay-10 { animation-delay: 1.0s; }
