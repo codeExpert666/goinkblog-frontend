@@ -224,13 +224,7 @@ const AIAssistant = ({
     // 关闭可能存在的事件源
     closeEventSources();
 
-    const config = polishArticle(articleContent);
-
     try {
-      // 构建URL
-      const url = new URL(config.url, 'http://192.168.5.88:52443');
-      const token = localStorage.getItem('token');
-
       // 创建AbortController用于控制请求超时和手动取消
       const controller = new AbortController();
       const { signal } = controller;
@@ -242,143 +236,29 @@ const AIAssistant = ({
       const timeoutId = setTimeout(() => {
         controller.abort();
       }, 5 * 60 * 1000);
-
-      // 使用fetch API发送POST请求并处理流式响应
-      const response = await fetch(url, {
-        method: 'POST',
-        headers: {
-          'Authorization': token,
-          'Content-Type': 'application/json',
-          'Accept': 'text/event-stream',  // 明确告诉服务器我们期望接收事件流
-          'Connection': 'keep-alive'      // 明确要求保持连接
+      
+      // 调用服务层的polishArticle方法
+      await polishArticle(articleContent, {
+        signal,
+        onData: (content) => {
+          // 处理正常数据 - 仅更新内容，滚动由useEffect处理
+          setPolishedContent(prevContent => {
+            return prevContent + content;
+          });
         },
-        body: JSON.stringify({ article_content: articleContent }),
-        signal,                           // 添加信号用于控制请求
-        keepalive: true                   // 启用keepalive选项
+        onError: (errorContent) => {
+          setPolishLoading(false);
+          message.error(`润色文章失败: ${errorContent}`);
+        },
+        onComplete: () => {
+          setPolishLoading(false);
+          message.success('文章润色完成');
+        }
       });
 
       // 清除超时计时器
       clearTimeout(timeoutId);
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      if (!response.body) {
-        throw new Error('ReadableStream not supported in this browser.');
-      }
-
-      // 获取响应的reader
-      const reader = response.body.getReader();
-      const decoder = new TextDecoder();
-
-      // 用于存储未完成的SSE消息
-      let buffer = '';
-
-      // 处理流式响应
-      let done = false;
-      // 添加最后活动时间跟踪
-      let lastActivityTime = Date.now();
-      // 添加心跳检查间隔（30秒）
-      const heartbeatInterval = setInterval(() => {
-        const now = Date.now();
-        // 如果超过60秒没有活动，认为连接可能已断开
-        if (now - lastActivityTime > 60000 && !done) {
-          console.log("润色请求长时间无响应，可能已断开");
-          clearInterval(heartbeatInterval);
-          // 不立即中断，给予更多时间让连接恢复
-        }
-      }, 30000);
-
-      try {
-        while (!done) {
-          const { value, done: readerDone } = await reader.read();
-          done = readerDone;
-          // 更新最后活动时间
-          lastActivityTime = Date.now();
-
-          if (done) {
-            // 流结束，处理缓冲区中可能剩余的数据
-            if (buffer.trim()) {
-              processSSEMessage(buffer);
-            }
-
-            setPolishLoading(false);
-            message.success('文章润色完成');
-            break;
-          }
-
-          // 解码数据并添加到缓冲区
-          const chunk = decoder.decode(value, { stream: true });
-          buffer += chunk;
-
-          console.log("收到润色数据块:", chunk); // 调试日志
-          console.log("润色当前缓冲区:", buffer); // 调试日志
-
-          // 查找完整的SSE消息（以空行分隔）
-          let boundaryIndex;
-          while ((boundaryIndex = buffer.indexOf('\n\n')) !== -1) {
-            // 提取一个完整的SSE消息
-            const message = buffer.substring(0, boundaryIndex).trim();
-            // 更新缓冲区，移除已处理的消息
-            buffer = buffer.substring(boundaryIndex + 2);
-
-            if (message) {
-              processSSEMessage(message);
-            }
-          }
-        }
-      } finally {
-        // 清理心跳检查
-        clearInterval(heartbeatInterval);
-      }
-
-      // 处理单个SSE消息的函数
-      function processSSEMessage(sseMessage) {
-        console.log("处理润色SSE消息:", sseMessage); // 调试日志
-
-        // 将消息按行分割，寻找data行
-        const lines = sseMessage.split('\n');
-        let dataContent = null;
-
-        for (const line of lines) {
-          if (line.startsWith('data:')) {
-            dataContent = line.substring(5).trim();
-            break;
-          }
-        }
-
-        // 如果没有找到data内容，直接返回
-        if (!dataContent) return;
-
-        // 处理流结束信号
-        if (dataContent === '[DONE]') {
-          setPolishLoading(false);
-          message.success('文章润色完成');
-          done = true;
-          return;
-        }
-
-        try {
-          // 解析JSON数据
-          const parsedData = JSON.parse(dataContent);
-
-          // 处理错误消息
-          if (parsedData.is_error) {
-            setPolishLoading(false);
-            message.error(`润色文章失败: ${parsedData.content}`);
-            done = true;
-            return;
-          }
-
-          // 处理正常数据 - 仅更新内容，滚动由useEffect处理
-          setPolishedContent(prevContent => {
-            return prevContent + parsedData.content;
-          });
-        } catch (error) {
-          console.error("解析数据失败:", error);
-        }
-      }
+      
     } catch (error) {
       console.error('润色文章时发生错误:', error);
 
@@ -452,13 +332,7 @@ const AIAssistant = ({
     // 关闭可能存在的事件源
     closeEventSources();
 
-    const config = generateSummary(articleContent);
-
     try {
-      // 构建URL
-      const url = new URL(config.url, 'http://192.168.5.88:52443');
-      const token = localStorage.getItem('token');
-
       // 创建AbortController用于控制请求超时和手动取消
       const controller = new AbortController();
       const { signal } = controller;
@@ -470,139 +344,29 @@ const AIAssistant = ({
       const timeoutId = setTimeout(() => {
         controller.abort();
       }, 5 * 60 * 1000);
-
-      // 使用fetch API发送POST请求并处理流式响应
-      const response = await fetch(url, {
-        method: 'POST',
-        headers: {
-          'Authorization': token,
-          'Content-Type': 'application/json',
-          'Accept': 'text/event-stream',  // 明确告诉服务器我们期望接收事件流
-          'Connection': 'keep-alive'      // 明确要求保持连接
+      
+      // 调用服务层的generateSummary方法
+      await generateSummary(articleContent, {
+        signal,
+        onData: (content) => {
+          // 处理正常数据 - 仅更新内容，滚动由useEffect处理
+          setSummary(prevSummary => {
+            return prevSummary + content;
+          });
         },
-        body: JSON.stringify({ article_content: articleContent }),
-        signal,                           // 添加信号用于控制请求
-        keepalive: true                   // 启用keepalive选项
+        onError: (errorContent) => {
+          setSummaryLoading(false);
+          message.error(`生成摘要失败: ${errorContent}`);
+        },
+        onComplete: () => {
+          setSummaryLoading(false);
+          message.success('摘要生成完成');
+        }
       });
 
       // 清除超时计时器
       clearTimeout(timeoutId);
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      if (!response.body) {
-        throw new Error('ReadableStream not supported in this browser.');
-      }
-
-      // 获取响应的reader
-      const reader = response.body.getReader();
-      const decoder = new TextDecoder();
-
-      // 用于存储未完成的SSE消息
-      let buffer = '';
-
-      // 处理流式响应
-      let done = false;
-      // 添加最后活动时间跟踪
-      let lastActivityTime = Date.now();
-      // 添加心跳检查间隔（30秒）
-      const heartbeatInterval = setInterval(() => {
-        const now = Date.now();
-        // 如果超过60秒没有活动，认为连接可能已断开
-        if (now - lastActivityTime > 60000 && !done) {
-          console.log("摘要生成请求长时间无响应，可能已断开");
-          clearInterval(heartbeatInterval);
-          // 不立即中断，给予更多时间让连接恢复
-        }
-      }, 30000);
-
-      try {
-        while (!done) {
-          const { value, done: readerDone } = await reader.read();
-          done = readerDone;
-          // 更新最后活动时间
-          lastActivityTime = Date.now();
-
-          if (done) {
-            // 流结束，处理缓冲区中可能剩余的数据
-            if (buffer.trim()) {
-              processSSEMessage(buffer);
-            }
-
-            setSummaryLoading(false);
-            message.success('摘要生成完成');
-            break;
-          }
-
-          // 解码数据并添加到缓冲区
-          const chunk = decoder.decode(value, { stream: true });
-          buffer += chunk;
-
-          console.log("收到数据块:", chunk); // 调试日志
-          console.log("当前缓冲区:", buffer); // 调试日志
-
-          // 查找完整的SSE消息（以空行分隔）
-          let boundaryIndex;
-          while ((boundaryIndex = buffer.indexOf('\n\n')) !== -1) {
-            // 提取一个完整的SSE消息
-            const message = buffer.substring(0, boundaryIndex).trim();
-            // 更新缓冲区，移除已处理的消息
-            buffer = buffer.substring(boundaryIndex + 2);
-
-            if (message) {
-              processSSEMessage(message);
-            }
-          }
-        }
-      } finally {
-        // 清理心跳检查
-        clearInterval(heartbeatInterval);
-      }
-
-      // 处理单个SSE消息的函数
-      function processSSEMessage(sseMessage) {
-        console.log("处理摘要SSE消息:", sseMessage);
-
-        // 从消息中分离出 data 数据
-        let dataContent = null;
-
-        if (sseMessage.startsWith('data:')) {
-          dataContent = sseMessage.substring(5).trim();
-        }
-
-        // 如果没有找到data内容，直接返回
-        if (!dataContent) return;
-
-        // 处理流结束信号
-        if (dataContent === '[DONE]') {
-          setSummaryLoading(false);
-          message.success('摘要生成完成');
-          done = true;
-          return;
-        }
-
-        try {
-          // 解析JSON数据
-          const parsedData = JSON.parse(dataContent);
-
-          // 处理错误消息
-          if (parsedData.is_error) {
-            setSummaryLoading(false);
-            message.error(`生成摘要失败: ${parsedData.content}`);
-            done = true;
-            return;
-          }
-
-          // 处理正常数据 - 仅更新内容，滚动由useEffect处理
-          setSummary(prevSummary => {
-            return prevSummary + parsedData.content;
-          });
-        } catch (error) {
-          console.error("解析数据失败:", error);
-        }
-      }
+      
     } catch (error) {
       console.error('生成摘要时发生错误:', error);
 
