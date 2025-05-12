@@ -36,7 +36,7 @@ import {
   FullscreenOutlined,
   FullscreenExitOutlined
 } from '@ant-design/icons';
-import uploadArticleCover from '../../services/article';
+import { uploadArticleCover } from '../../services/article';
 import EnhancedMarkdownHelper from './EnhancedMarkdownHelper';
 import ArticleContentRenderer from './ArticleContentRenderer';
 

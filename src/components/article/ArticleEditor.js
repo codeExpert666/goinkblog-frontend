@@ -18,7 +18,7 @@ import {
   LoadingOutlined,
   PictureOutlined
 } from '@ant-design/icons';
-import uploadArticleCover from '../../services/article';
+import { uploadArticleCover } from '../../services/article';
 import EnhancedMarkdownEditor from './EnhancedMarkdownEditor';
 import AIAssistant from './AIAssistant';
 
