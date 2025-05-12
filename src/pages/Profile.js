@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect, useCallback } from 'react';
 import { Form, Input, Button, message, Upload, Avatar, Tabs, Spin, Card } from 'antd';
 import { UserOutlined, MailOutlined, EditOutlined, UploadOutlined, LockOutlined } from '@ant-design/icons';
-import { updateProfile, uploadAvatar, getFullAvatarUrl } from '../services/auth';
+import { updateProfile, uploadAvatar } from '../services/auth';
 import { AuthContext } from '../store/authContext';
 
 const { TabPane } = Tabs;
@@ -19,7 +19,7 @@ const Profile = () => {
   const resetFormToUserData = useCallback(() => {
     if (user) {
       // 转换头像URL为完整可访问的URL用于显示
-      setAvatarUrl(getFullAvatarUrl(user.avatar));
+      setAvatarUrl(user.avatar);
       // 初始化基本信息表单
       basicForm.setFieldsValue({
         username: user.username,
@@ -107,10 +107,7 @@ const Profile = () => {
       if (result.code === 200 && result.data) {
         // 获取后端返回的头像URL
         const avatarUrl = result.data.url;
-        
-        // 生成完整URL用于显示
-        const fullAvatarUrl = getFullAvatarUrl(avatarUrl);
-        setAvatarUrl(fullAvatarUrl);
+        setAvatarUrl(avatarUrl);
         
         console.log('头像上传成功，URL:', avatarUrl);
         
@@ -133,7 +130,7 @@ const Profile = () => {
       onError(error);
       message.error('头像上传失败，请重试');
       // 上传失败时，重置头像
-      setAvatarUrl(getFullAvatarUrl(user.avatar));
+      setAvatarUrl(user.avatar);
     } finally {
       setUploading(false);
     }

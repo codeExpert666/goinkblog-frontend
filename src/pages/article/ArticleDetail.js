@@ -40,10 +40,8 @@ import {
   toggleLikeArticle,
   toggleFavoriteArticle,
   deleteArticle,
-  getFullCoverUrl,
   unpublishArticle
 } from '../../services/article';
-import { getFullAvatarUrl } from '../../services/auth';
 import { AuthContext } from '../../store/authContext';
 
 
@@ -294,7 +292,7 @@ const ArticleDetail = () => {
             {/* 文章元信息 */}
             <Space wrap split={<Divider type="vertical" />} style={{ margin: '16px 0' }}>
               <Space>
-                <Avatar src={getFullAvatarUrl(author_avatar)} icon={<UserOutlined />} />
+                <Avatar src={author_avatar} icon={<UserOutlined />} />
                 <Text>{author}</Text>
               </Space>
               <Space>
@@ -351,7 +349,7 @@ const ArticleDetail = () => {
             {cover && (
               <div style={{ margin: '0 0 24px 0' }}>
                 <img
-                  src={getFullCoverUrl(cover)}
+                  src={cover}
                   alt={title}
                   style={{
                     maxWidth: '100%',

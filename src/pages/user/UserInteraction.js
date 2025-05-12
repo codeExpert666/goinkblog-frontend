@@ -40,7 +40,6 @@ import {
 } from '../../services/article';
 import { getUserComments, deleteComment } from '../../services/comment';
 import { AuthContext } from '../../store/authContext';
-import { getFullAvatarUrl } from '../../services/auth';
 import ArticleList from '../../components/article/ArticleList';
 import '../../styles/article/articleCard.css';
 import '../../styles/user/userInteraction.css';
@@ -610,7 +609,7 @@ const UserInteractionPage = () => {
                     >
                       <div className="user-interaction-comment-header">
                         <Avatar
-                          src={getFullAvatarUrl(user.avatar)}
+                          src={user.avatar}
                           icon={<UserOutlined />}
                           size="large"
                           style={{ boxShadow: '0 2px 6px rgba(0,0,0,0.1)' }}

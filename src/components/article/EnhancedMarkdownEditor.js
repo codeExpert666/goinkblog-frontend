@@ -36,7 +36,7 @@ import {
   FullscreenOutlined,
   FullscreenExitOutlined
 } from '@ant-design/icons';
-import { uploadArticleCover, getFullCoverUrl } from '../../services/article';
+import uploadArticleCover from '../../services/article';
 import EnhancedMarkdownHelper from './EnhancedMarkdownHelper';
 import ArticleContentRenderer from './ArticleContentRenderer';
 
@@ -378,7 +378,7 @@ const EnhancedMarkdownEditor = ({
 
       if (response.data && response.data.url) {
         // 获取完整的URL
-        const fullUrl = getFullCoverUrl(response.data.url);
+        const fullUrl = response.data.url;
 
         // 插入图片Markdown
         const imageMarkdown = `![${file.name}](${fullUrl})`;

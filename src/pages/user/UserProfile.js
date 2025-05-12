@@ -54,7 +54,7 @@ import {
 } from '@ant-design/icons';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../store/authContext';
-import { updateProfile, uploadAvatar, getFullAvatarUrl } from '../../services/auth';
+import { updateProfile, uploadAvatar } from '../../services/auth';
 import {
   getArticles,
   publishDraft,
@@ -132,7 +132,7 @@ const UserProfile = () => {
   // 初始化用户数据
   const resetFormToUserData = useCallback(() => {
     if (user) {
-      setAvatarUrl(getFullAvatarUrl(user.avatar));
+      setAvatarUrl(user.avatar);
       basicForm.setFieldsValue({
         username: user.username,
         email: user.email,
@@ -369,8 +369,7 @@ const UserProfile = () => {
 
       if (result.code === 200 && result.data) {
         const avatarUrl = result.data.url;
-        const fullAvatarUrl = getFullAvatarUrl(avatarUrl);
-        setAvatarUrl(fullAvatarUrl);
+        setAvatarUrl(avatarUrl);
 
         updateUser({
           ...user,
@@ -388,7 +387,7 @@ const UserProfile = () => {
       console.error('头像上传失败:', error);
       onError(error);
       message.error('头像上传失败，请重试');
-      setAvatarUrl(getFullAvatarUrl(user.avatar));
+      setAvatarUrl(user.avatar);
     } finally {
       setUploading(false);
     }

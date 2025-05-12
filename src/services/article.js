@@ -87,17 +87,3 @@ export const uploadArticleCover = (formData) => {
     },
   });
 };
-
-// 获取完整的文章封面URL
-export const getFullCoverUrl = (coverUrl) => {
-  if (!coverUrl) return '';
-
-  // 如果已经是完整URL，直接返回
-  if (coverUrl.startsWith('http://') || coverUrl.startsWith('https://')) {
-    return coverUrl;
-  }
-
-  // 确保URL以/开头
-  const path = coverUrl.startsWith('/') ? coverUrl : `/${coverUrl}`;
-  return `${api.defaults.baseURL}${path}`;
-};

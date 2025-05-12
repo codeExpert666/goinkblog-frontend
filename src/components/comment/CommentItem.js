@@ -3,7 +3,6 @@ import { Avatar, Button, message, Skeleton, Tag } from 'antd';
 import { UserOutlined, RetweetOutlined, UnorderedListOutlined, CheckCircleOutlined, ClockCircleOutlined, CloseCircleOutlined } from '@ant-design/icons';
 import CommentContentRenderer from './CommentContentRenderer';
 import { AuthContext } from '../../store/authContext';
-import { getFullAvatarUrl } from '../../services/auth';
 import CommentEditor from './CommentEditor';
 import CommentReplies from './CommentReplies';
 import { createComment } from '../../services/comment';
@@ -118,7 +117,7 @@ const CommentItem = ({ comment, articleId, onCommentUpdate }) => {
     <div className="comment-item">
       <div className="comment-header">
         <Avatar
-          src={getFullAvatarUrl(comment.avatar)}
+          src={comment.avatar}
           icon={<UserOutlined />}
           size="default"
         />

@@ -9,22 +9,7 @@ export const getCaptchaId = () => {
 export const getCaptchaImageUrl = (captchaId, reload = 0) => {
   // 添加时间戳防止浏览器缓存
   const timestamp = new Date().getTime();
-  return `${api.defaults.baseURL}/api/auth/captcha/image?id=${captchaId}&reload=${reload}&t=${timestamp}`;
-};
-
-// 获取完整的头像URL
-// 后端返回的是URL，通过 http://localhost:52443/URL 可以访问头像
-export const getFullAvatarUrl = (avatarUrl) => {
-  if (!avatarUrl) return '';
-  
-  // 如果已经是完整URL，直接返回
-  if (avatarUrl.startsWith('http://') || avatarUrl.startsWith('https://')) {
-    return avatarUrl;
-  }
-  
-  // 确保URL以/开头
-  const path = avatarUrl.startsWith('/') ? avatarUrl : `/${avatarUrl}`;
-  return `${api.defaults.baseURL}${path}`;
+  return `/api/auth/captcha/image?id=${captchaId}&reload=${reload}&t=${timestamp}`;
 };
 
 // 用户登录

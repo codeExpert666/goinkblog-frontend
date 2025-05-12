@@ -13,7 +13,7 @@ import {
 } from '@ant-design/icons';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../store/authContext';
-import { logout as logoutService, getFullAvatarUrl } from '../services/auth';
+import { logout as logoutService } from '../services/auth';
 
 const { Header, Content, Footer } = AntLayout;
 
@@ -135,7 +135,7 @@ const Layout = ({ children }) => {
               // 已登录：显示用户信息和下拉菜单
               <Dropdown menu={{ items: userMenu }} placement="bottomRight">
                 <Space style={{ cursor: 'pointer' }}>
-                  <Avatar src={getFullAvatarUrl(user.avatar)} icon={<UserOutlined />} />
+                  <Avatar src={user.avatar} icon={<UserOutlined />} />
                   <span>{user.username}</span>
                 </Space>
               </Dropdown>

@@ -14,8 +14,6 @@ import {
   TagOutlined,
 } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
-import { getFullCoverUrl } from '../../services/article';
-import { getFullAvatarUrl } from '../../services/auth';
 import CategoryTag from '../category/CategoryTag';
 import TagDisplay from '../tag/TagDisplay';
 import '../../styles/article/articleCard.css';
@@ -82,7 +80,7 @@ const ArticleItem = ({ article, showActions = true, onLike, onFavorite, onCommen
           <Link to={`/articles/${id}`}>
             <div style={{
               height: 250,
-              backgroundImage: `url(${getFullCoverUrl(cover)})`,
+              backgroundImage: `url(${cover})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               backgroundRepeat: 'no-repeat',
@@ -115,7 +113,7 @@ const ArticleItem = ({ article, showActions = true, onLike, onFavorite, onCommen
           <Space split={<span style={{ margin: '0 8px' }}>|</span>}>
             <Space>
               <Avatar
-                src={getFullAvatarUrl(author_avatar)}
+                src={author_avatar}
                 icon={<UserOutlined />}
                 size="small"
                 style={{

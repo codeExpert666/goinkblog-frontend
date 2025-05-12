@@ -18,7 +18,7 @@ import {
   LoadingOutlined,
   PictureOutlined
 } from '@ant-design/icons';
-import { uploadArticleCover, getFullCoverUrl } from '../../services/article';
+import uploadArticleCover from '../../services/article';
 import EnhancedMarkdownEditor from './EnhancedMarkdownEditor';
 import AIAssistant from './AIAssistant';
 
@@ -171,7 +171,7 @@ const ArticleEditor = ({
                   }}
                 >
                   <img
-                    src={getFullCoverUrl(coverUrl)}
+                    src={coverUrl}
                     alt="文章封面"
                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                   />

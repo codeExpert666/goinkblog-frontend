@@ -22,7 +22,6 @@ import {
 import { useNavigate, Routes, Route, useLocation } from 'react-router-dom';
 import { getSystemInfo, getSiteOverview, getAPIAccessTrend, getUserActivityTrend, getCategoryDistribution, getArticleCreationTimeStats } from '../../services/stat';
 import { AuthContext } from '../../store/authContext';
-import { getFullAvatarUrl } from '../../services/auth';
 import CategoryManagement from '../category/CategoryManagement';
 import TagManagement from '../tag/TagManagement';
 import CommentManagement from '../comment/CommentManagement';
@@ -356,7 +355,7 @@ const AdminCenter = () => {
           <Avatar
             size={64}
             icon={<UserOutlined />}
-            src={getFullAvatarUrl(user?.avatar)}
+            src={user?.avatar}
             style={{ backgroundColor: '#f56a00', boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)', marginTop: '8px' }}
           />
         </div>

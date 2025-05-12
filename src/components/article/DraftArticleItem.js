@@ -13,8 +13,6 @@ import {
   TagOutlined
 } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
-import { getFullCoverUrl } from '../../services/article';
-import { getFullAvatarUrl } from '../../services/auth';
 import '../../styles/article/articleCard.css';
 import '../../styles/tag/tagStyles.css';
 
@@ -72,7 +70,7 @@ const DraftArticleItem = ({ article, onPublish, onDelete }) => {
           <div style={{ position: 'relative' }}>
             <div style={{
               height: 200,
-              backgroundImage: `url(${getFullCoverUrl(cover)})`,
+              backgroundImage: `url(${cover})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               backgroundRepeat: 'no-repeat',
@@ -124,7 +122,7 @@ const DraftArticleItem = ({ article, onPublish, onDelete }) => {
           <Space split={<span style={{ margin: '0 8px' }}>|</span>}>
             <Space>
               <Avatar
-                src={getFullAvatarUrl(author_avatar)}
+                src={author_avatar}
                 icon={<UserOutlined />}
                 size="small"
               />
