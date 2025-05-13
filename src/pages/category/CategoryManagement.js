@@ -128,7 +128,7 @@ const CategoryManagement = () => {
         });
       }
     } catch (error) {
-      console.error('获取分类列表失败:', error);
+      console.error('Failed to get category list:', error);
       message.error('获取分类列表失败');
     } finally {
       setLoading(false);
@@ -312,7 +312,7 @@ const CategoryManagement = () => {
 
       fetchCategories(pagination.current, pagination.pageSize, sorters);
     } catch (error) {
-      console.error('保存分类失败:', error);
+      console.error('Failed to save category:', error);
       message.error('保存分类失败');
     }
   };
@@ -357,7 +357,7 @@ const CategoryManagement = () => {
 
       fetchCategories(pagination.current, pagination.pageSize, sorters);
     } catch (error) {
-      console.error('删除分类失败:', error);
+      console.error('Failed to delete category:', error);
 
       // 如果是冲突错误（分类下有文章）
       if (error.code === 409 || (error.response && error.response.status === 409)) {

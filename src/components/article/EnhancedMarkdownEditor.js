@@ -390,7 +390,7 @@ const EnhancedMarkdownEditor = ({
         onError(new Error('上传失败'));
       }
     } catch (error) {
-      console.error('图片上传失败:', error);
+      console.error('Image upload failed:', error);
       message.error('图片上传失败: ' + (error.message || '未知错误'));
       onError(error);
     } finally {
@@ -511,7 +511,7 @@ const EnhancedMarkdownEditor = ({
         await onSave(content);
         message.success('保存成功');
       } catch (error) {
-        console.error('保存失败:', error);
+        console.error('Save failed:', error);
         message.error('保存失败，请稍后再试');
       } finally {
         setSaving(false);

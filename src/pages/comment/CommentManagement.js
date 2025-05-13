@@ -89,10 +89,10 @@ const CommentManagement = () => {
           rejectedComments: response.data.rejected_comments || 0,
         });
       } else {
-        console.error('获取评论统计数据失败:', response.message);
+        console.error('Failed to fetch comment statistics:', response.message);
       }
     } catch (error) {
-      console.error('获取评论统计数据失败:', error);
+      console.error('Failed to fetch comment statistics:', error);
     }
   }, []);
 
@@ -139,7 +139,7 @@ const CommentManagement = () => {
         message.error(response.message || '获取评论列表失败');
       }
     } catch (error) {
-      console.error('获取评论列表失败:', error);
+      console.error('Failed to get comment list:', error);
       message.error('获取评论列表失败');
     } finally {
       setLoading(false);
@@ -220,7 +220,7 @@ const CommentManagement = () => {
             message.error(response.message || '评论审核通过失败');
           }
         } catch (error) {
-          console.error('评论审核通过失败:', error);
+          console.error('Failed to approve comment:', error);
           message.error('评论审核通过失败');
         }
       },
@@ -264,7 +264,7 @@ const CommentManagement = () => {
         message.error(response.message || '评论拒绝失败');
       }
     } catch (error) {
-      console.error('评论拒绝失败:', error);
+      console.error('Failed to reject comment:', error);
       message.error('评论拒绝失败');
     } finally {
       setRejectLoading(false);

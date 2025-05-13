@@ -109,8 +109,6 @@ const Profile = () => {
         const avatarUrl = result.data.url;
         setAvatarUrl(avatarUrl);
         
-        console.log('头像上传成功，URL:', avatarUrl);
-        
         // 更新用户信息中的头像URL
         updateUser({
           ...user,

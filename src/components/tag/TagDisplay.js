@@ -51,7 +51,7 @@ const TagDisplay = ({
           setError(new Error(`未找到ID为${id}的标签`));
         }
       } catch (err) {
-        console.error('获取标签信息失败:', err);
+        console.error('Failed to get tag infomation:', err);
         setError(err);
       } finally {
         setLoading(false);

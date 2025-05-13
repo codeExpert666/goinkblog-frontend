@@ -147,7 +147,7 @@ const LoggerManagement = () => {
         });
       }
     } catch (error) {
-      console.error('获取日志数据失败:', error);
+      console.error('Failed to fetch log data:', error);
       message.error('获取日志数据失败');
     } finally {
       setLoading(false);
@@ -255,7 +255,7 @@ const LoggerManagement = () => {
         const fullyParsedData = parseNestedJson(parsedData);
         setJsonParsedData(fullyParsedData);
       } catch (error) {
-        console.error('JSON解析失败:', error);
+        console.error('Failed to parse JSON:', error);
         setJsonParsedData(null);
       }
     } else {

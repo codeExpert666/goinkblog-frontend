@@ -64,7 +64,7 @@ const SystemInfo = () => {
           const response = await getSystemInfo();
           setSystemInfo(response.data);
         } catch (error) {
-          console.error('获取系统信息失败:', error);
+          console.error('Failed to get system information:', error);
         } finally {
           setLoading(prev => ({...prev, system: false}));
         }
@@ -76,7 +76,7 @@ const SystemInfo = () => {
           const response = await getCPUInfo();
           setCpuInfo(response.data);
         } catch (error) {
-          console.error('获取CPU信息失败:', error);
+          console.error('Failed to get CPU information:', error);
         } finally {
           setLoading(prev => ({...prev, cpu: false}));
         }
@@ -88,7 +88,7 @@ const SystemInfo = () => {
           const response = await getMemoryInfo();
           setMemoryInfo(response.data);
         } catch (error) {
-          console.error('获取内存信息失败:', error);
+          console.error('Failed to get memory information:', error);
         } finally {
           setLoading(prev => ({...prev, memory: false}));
         }
@@ -100,7 +100,7 @@ const SystemInfo = () => {
           const response = await getDiskInfo();
           setDiskInfo(response.data);
         } catch (error) {
-          console.error('获取磁盘信息失败:', error);
+          console.error('Failed to get disk information:', error);
         } finally {
           setLoading(prev => ({...prev, disk: false}));
         }
@@ -112,7 +112,7 @@ const SystemInfo = () => {
           const response = await getGoRuntimeInfo();
           setGoRuntimeInfo(response.data);
         } catch (error) {
-          console.error('获取GO运行时信息失败:', error);
+          console.error('Failed to get GO runtime information:', error);
         } finally {
           setLoading(prev => ({...prev, goRuntime: false}));
         }
@@ -124,7 +124,7 @@ const SystemInfo = () => {
           const response = await getDatabaseInfo();
           setDatabaseInfo(response.data);
         } catch (error) {
-          console.error('获取数据库信息失败:', error);
+          console.error('Failed to get database information:', error);
         } finally {
           setLoading(prev => ({...prev, database: false}));
         }
@@ -136,7 +136,7 @@ const SystemInfo = () => {
           const response = await getCacheInfo();
           setCacheInfo(response.data);
         } catch (error) {
-          console.error('获取缓存信息失败:', error);
+          console.error('Failed to get cache information:', error);
         } finally {
           setLoading(prev => ({...prev, cache: false}));
         }

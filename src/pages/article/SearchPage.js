@@ -53,7 +53,7 @@ const SearchPage = () => {
         });
       }
     } catch (error) {
-      console.error('获取文章列表失败:', error);
+      console.error('Failed to get article list:', error);
       message.error('获取文章列表失败');
     } finally {
       setLoading(false);
@@ -123,7 +123,7 @@ const SearchPage = () => {
                 fetchArticles(newParams);
               } else {
                 // 未找到匹配的分类，仍然执行搜索但不带分类ID
-                console.warn(`未找到名为 "${categoryName}" 的分类`);
+                console.warn(`Could not find category named "${categoryName}"`);
                 fetchArticles(newParams);
               }
             } else {
@@ -131,7 +131,7 @@ const SearchPage = () => {
               fetchArticles(newParams);
             }
           } catch (error) {
-            console.error('获取分类列表失败:', error);
+            console.error('Failed to get category list:', error);
             // 出错时仍然执行搜索但不带分类ID
             fetchArticles(newParams);
           }
@@ -205,7 +205,7 @@ const SearchPage = () => {
         message.success(response.data.interacted ? '点赞成功' : '已取消点赞');
       }
     } catch (error) {
-      console.error('点赞操作失败:', error);
+      console.error('Failed to like the article:', error);
       message.error('点赞操作失败');
     }
   };
@@ -244,7 +244,7 @@ const SearchPage = () => {
         message.success(response.data.interacted ? '收藏成功' : '已取消收藏');
       }
     } catch (error) {
-      console.error('收藏操作失败:', error);
+      console.error('Failed to favorite the article:', error);
       message.error('收藏操作失败');
     }
   };

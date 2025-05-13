@@ -110,7 +110,7 @@ const RBACManagement = () => {
         });
       }
     } catch (error) {
-      console.error('获取RBAC策略数据失败:', error);
+      console.error('Failed to fetch RBAC policy data:', error);
       message.error('获取RBAC策略数据失败');
     } finally {
       setLoading(false);
@@ -185,7 +185,7 @@ const RBACManagement = () => {
         }, 0);
       }
     } catch (error) {
-      console.error('权限测试失败:', error);
+      console.error('Failed to test permission:', error);
       message.error('权限测试失败');
     }
   };
@@ -218,7 +218,7 @@ const RBACManagement = () => {
       // 刷新数据
       fetchData(pagination.current, pagination.pageSize, queryParams);
     } catch (error) {
-      console.error('保存策略失败:', error);
+      console.error('Failed to save policy:', error);
 
       // 错误处理
       if (error.code === 409 || (error.response && error.response.status === 409)) {
@@ -238,7 +238,7 @@ const RBACManagement = () => {
       // 刷新数据
       fetchData(pagination.current, pagination.pageSize, queryParams);
     } catch (error) {
-      console.error('删除策略失败:', error);
+      console.error('Failed to delete policy:', error);
       message.error('删除策略失败');
     }
   };

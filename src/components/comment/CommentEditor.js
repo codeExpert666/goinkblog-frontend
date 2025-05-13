@@ -100,7 +100,7 @@ const CommentEditor = ({ articleId, parentId = null, onSuccess, onCancel, placeh
       onSuccess && onSuccess(content);
       setContent('');
     } catch (error) {
-      console.error('发表评论失败:', error);
+      console.error('Failed to post comment:', error);
       message.error('发表评论失败，请稍后再试');
     } finally {
       setSubmitting(false);

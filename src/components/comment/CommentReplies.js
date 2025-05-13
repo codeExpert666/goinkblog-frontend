@@ -55,7 +55,7 @@ const CommentReplies = ({ commentId, articleId, onCommentUpdate }) => {
         message.error(response.message || '获取回复失败');
       }
     } catch (error) {
-      console.error('获取评论回复失败:', error);
+      console.error('Failed to get comment replies:', error);
       message.error('获取回复失败，请稍后再试');
     } finally {
       setLoading(false);
@@ -111,7 +111,7 @@ const CommentReplies = ({ commentId, articleId, onCommentUpdate }) => {
         message.error(response.message || '回复失败');
       }
     } catch (error) {
-      console.error('回复评论失败:', error);
+      console.error('Failed to reply comment:', error);
       message.error('回复失败，请稍后再试');
     }
   };

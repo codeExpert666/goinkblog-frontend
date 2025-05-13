@@ -111,7 +111,7 @@ const UserInteractionPage = () => {
         comments: commentsRes.data?.total || 0
       });
     } catch (error) {
-      console.error('获取互动统计数据失败:', error);
+      console.error('Failed to fetch interaction statistics:', error);
       message.error('获取统计数据失败');
     }
   }, [user]);
@@ -165,7 +165,7 @@ const UserInteractionPage = () => {
           break;
       }
     } catch (error) {
-      console.error('获取互动内容失败:', error);
+      console.error('Failed to fetch interaction content:', error);
       message.error('获取互动内容失败');
     } finally {
       setLoading(false);
@@ -206,7 +206,7 @@ const UserInteractionPage = () => {
         message.error(response.message || '获取评论失败');
       }
     } catch (error) {
-      console.error('获取评论失败:', error);
+      console.error('Failed to get comments:', error);
       message.error('获取评论失败');
     } finally {
       setCommentsLoading(false);
@@ -226,7 +226,7 @@ const UserInteractionPage = () => {
         message.error(response.message || '删除评论失败');
       }
     } catch (error) {
-      console.error('删除评论失败:', error);
+      console.error('Failed to delete comment:', error);
       message.error('删除评论失败');
     }
   };
@@ -369,7 +369,7 @@ const UserInteractionPage = () => {
         }
       }
     } catch (error) {
-      console.error('点赞操作失败:', error);
+      console.error('Failed to like the article:', error);
       message.error('点赞操作失败');
     }
   };
@@ -443,7 +443,7 @@ const UserInteractionPage = () => {
         }
       }
     } catch (error) {
-      console.error('收藏操作失败:', error);
+      console.error('Failed to favorite the article:', error);
       message.error('收藏操作失败');
     }
   };

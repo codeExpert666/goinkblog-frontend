@@ -58,7 +58,7 @@ const GoErrorStack = ({ stackTrace }) => {
       const highlighted = hljs.highlight(code, { language: 'gostack' }).value;
       return highlighted;
     } catch (error) {
-      console.error('高亮处理失败:', error);
+      console.error('Failed to highlight:', error);
       return code;
     }
   };

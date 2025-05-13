@@ -45,7 +45,7 @@ const CommentSection = ({ articleId }) => {
         message.error(response.message || '获取评论失败');
       }
     } catch (error) {
-      console.error('获取文章评论失败:', error);
+      console.error('Failed to get article replys:', error);
       message.error('获取评论失败，请稍后再试');
     } finally {
       setLoading(false);
@@ -88,7 +88,7 @@ const CommentSection = ({ articleId }) => {
         message.error(response.message || '评论发表失败');
       }
     } catch (error) {
-      console.error('发表评论失败:', error);
+      console.error('Failed to post comment:', error);
       message.error('评论发表失败，请稍后再试');
     }
   };

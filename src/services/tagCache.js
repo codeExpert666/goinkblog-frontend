@@ -25,7 +25,7 @@ const tagCache = {
       }
       return null;
     } catch (error) {
-      console.error(`获取标签(ID:${tagId})数据失败:`, error);
+      console.error(`Failed to fetch tag (ID:${tagId}) data:`, error);
       return null;
     }
   },

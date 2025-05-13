@@ -36,7 +36,7 @@ const CategoryTag = ({
           setError(new Error(`未找到ID为${id}的分类`));
         }
       } catch (err) {
-        console.error('获取分类信息失败:', err);
+        console.error('Failed to get category information:', err);
         setError(err);
       } finally {
         setLoading(false);

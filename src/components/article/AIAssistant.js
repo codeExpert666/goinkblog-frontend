@@ -260,7 +260,7 @@ const AIAssistant = ({
       clearTimeout(timeoutId);
       
     } catch (error) {
-      console.error('润色文章时发生错误:', error);
+      console.error('Error while polishing article:', error);
 
       // 只有在不是手动停止的情况下才显示错误消息
       if (!manualStopRef.current.polish) {
@@ -368,7 +368,7 @@ const AIAssistant = ({
       clearTimeout(timeoutId);
       
     } catch (error) {
-      console.error('生成摘要时发生错误:', error);
+      console.error('Error while generating summary:', error);
 
       // 只有在不是手动停止的情况下才显示错误消息
       if (!manualStopRef.current.summary) {
@@ -448,7 +448,7 @@ const AIAssistant = ({
         message.error('生成标签失败，返回数据格式错误');
       }
     } catch (error) {
-      console.error('生成标签时出错:', error);
+      console.error('Error while generating tags:', error);
       message.error('生成标签失败，请稍后重试');
     } finally {
       setTagsLoading(false);
@@ -557,7 +557,7 @@ const AIAssistant = ({
         message.error('生成标题失败，返回数据格式错误');
       }
     } catch (error) {
-      console.error('生成标题时出错:', error);
+      console.error('Error while generating titles:', error);
       message.error('生成标题失败，请稍后重试');
     } finally {
       setTitlesLoading(false);

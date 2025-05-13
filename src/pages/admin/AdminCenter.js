@@ -76,7 +76,7 @@ const AdminCenter = () => {
           const response = await getSystemInfo();
           setSystemInfo(response.data);
         } catch (error) {
-          console.error('获取系统信息失败:', error);
+          console.error('Failed to get system information:', error);
         } finally {
           setLoading(false);
         }
@@ -88,7 +88,7 @@ const AdminCenter = () => {
           const response = await getSiteOverview();
           setSiteOverview(response.data);
         } catch (error) {
-          console.error('获取网站概览数据失败:', error);
+          console.error('Failed to get website overview infomation:', error);
         } finally {
           setOverviewLoading(false);
         }
@@ -100,7 +100,7 @@ const AdminCenter = () => {
           const response = await getAPIAccessTrend(apiTrendDays);
           setApiTrendData(response.data || []);
         } catch (error) {
-          console.error('获取API访问趋势数据失败:', error);
+          console.error('Failed to fetch API access trend data:', error);
         } finally {
           setApiTrendLoading(false);
         }
@@ -112,7 +112,7 @@ const AdminCenter = () => {
           const response = await getUserActivityTrend(userActivityDays);
           setUserActivityData(response.data || []);
         } catch (error) {
-          console.error('获取用户活跃度数据失败:', error);
+          console.error('Failed to fetch user activity data:', error);
         } finally {
           setUserActivityLoading(false);
         }
@@ -135,7 +135,7 @@ const AdminCenter = () => {
           setCategoryDistData(categories);
           setCategoryColorMap(prevMap => ({ ...prevMap, ...colorMap }));
         } catch (error) {
-          console.error('获取文章分类分布数据失败:', error);
+          console.error('Failed to fetch category distribution data:', error);
         } finally {
           setCategoryDistLoading(false);
         }
@@ -174,7 +174,7 @@ const AdminCenter = () => {
           
           setArticleCreationData(processedData || []);
         } catch (error) {
-          console.error('获取文章创作时间统计数据失败:', error);
+          console.error('Failed to fetch article creation time statistics data:', error);
         } finally {
           setArticleCreationLoading(false);
         }

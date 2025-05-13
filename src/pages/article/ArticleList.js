@@ -40,7 +40,7 @@ const ArticlesPage = () => {
         setHotArticles(response.data);
       }
     } catch (error) {
-      console.error('获取热门文章失败:', error);
+      console.error('Failed to get hot articles:', error);
     } finally {
       setHotLoading(false);
     }
@@ -55,7 +55,7 @@ const ArticlesPage = () => {
         setLatestArticles(response.data);
       }
     } catch (error) {
-      console.error('获取最新文章失败:', error);
+      console.error('Failed to get latest articles:', error);
     } finally {
       setLatestLoading(false);
     }
@@ -70,7 +70,7 @@ const ArticlesPage = () => {
         setCategoryDistribution(response.data);
       }
     } catch (error) {
-      console.error('获取分类分布数据失败:', error);
+      console.error('Failed to fetch category distribution data:', error);
     } finally {
       setCategoryLoading(false);
     }
@@ -85,7 +85,7 @@ const ArticlesPage = () => {
         setHotTags(response.data);
       }
     } catch (error) {
-      console.error('获取热门标签失败:', error);
+      console.error('Failed to get hot tags:', error);
     } finally {
       setHotTagsLoading(false);
     }
@@ -130,7 +130,7 @@ const ArticlesPage = () => {
         });
       }
     } catch (error) {
-      console.error(`获取分类 ${categoryId} 文章失败:`, error);
+      console.error(`Failed to fetch articles for category ${categoryId}:`, error);
       // 错误时也需要设置加载状态为false
       startTransition(() => {
         setCategoriesArticlesLoading(prev => ({ ...prev, [categoryId]: false }));
@@ -187,7 +187,7 @@ const ArticlesPage = () => {
         }
       }
     } catch (error) {
-      console.error('获取热门分类文章失败:', error);
+      console.error('Failed to fetch popular category articles:', error);
     }
   }, [categoryDistribution, fetchCategoryArticles, currentCategoryId, startTransition, categoriesArticlesMap]);
 
@@ -301,7 +301,7 @@ const ArticlesPage = () => {
         message.success(response.data.interacted ? '点赞成功' : '已取消点赞');
       }
     } catch (error) {
-      console.error('点赞操作失败:', error);
+      console.error('Failed to like the article:', error);
       message.error('点赞操作失败');
     }
   };
@@ -348,7 +348,7 @@ const ArticlesPage = () => {
         message.success(response.data.interacted ? '收藏成功' : '已取消收藏');
       }
     } catch (error) {
-      console.error('收藏操作失败:', error);
+      console.error('Failed to favorite the article:', error);
       message.error('收藏操作失败');
     }
   };

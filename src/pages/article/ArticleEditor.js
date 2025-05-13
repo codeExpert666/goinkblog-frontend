@@ -38,7 +38,7 @@ const ArticleEditorPage = () => {
         navigate('/articles');
       }
     } catch (error) {
-      console.error('获取文章详情失败:', error);
+      console.error('Failed to get article details:', error);
       message.error('获取文章详情失败');
       navigate('/articles');
     } finally {
@@ -88,7 +88,7 @@ const ArticleEditorPage = () => {
         }
       }
     } catch (error) {
-      console.error('保存文章失败:', error);
+      console.error('Failed to save article:', error);
       message.error('保存文章失败');
     } finally {
       setSubmitting(false);

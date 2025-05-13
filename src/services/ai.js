@@ -64,7 +64,6 @@ export const polishArticle = async (articleContent, { onData, onError, onComplet
       const now = Date.now();
       // 如果超过60秒没有活动，认为连接可能已断开
       if (now - lastActivityTime > 60000 && !done) {
-        console.log("润色请求长时间无响应，可能已断开");
         clearInterval(heartbeatInterval);
         // 不立即中断，给予更多时间让连接恢复
       }
@@ -91,9 +90,6 @@ export const polishArticle = async (articleContent, { onData, onError, onComplet
         const chunk = decoder.decode(value, { stream: true });
         buffer += chunk;
 
-        console.log("收到润色数据块:", chunk); // 调试日志
-        console.log("润色当前缓冲区:", buffer); // 调试日志
-
         // 查找完整的SSE消息（以空行分隔）
         let boundaryIndex;
         while ((boundaryIndex = buffer.indexOf('\n\n')) !== -1) {
@@ -114,8 +110,6 @@ export const polishArticle = async (articleContent, { onData, onError, onComplet
 
     // 处理单个SSE消息的函数
     function processSSEMessage(sseMessage) {
-      console.log("处理润色SSE消息:", sseMessage); // 调试日志
-
       // 将消息按行分割，寻找data行
       const lines = sseMessage.split('\n');
       let dataContent = null;
@@ -151,7 +145,7 @@ export const polishArticle = async (articleContent, { onData, onError, onComplet
         // 处理正常数据
         onData && onData(parsedData.content);
       } catch (error) {
-        console.error("解析数据失败:", error);
+        console.error("Failed to parse data:", error);
       }
     }
   } catch (error) {
@@ -160,8 +154,6 @@ export const polishArticle = async (articleContent, { onData, onError, onComplet
       onError && onError(error);
       throw error;
     }
-    // 如果是AbortError，只需捕获但不调用错误回调，避免显示不必要的错误提示
-    console.log('请求被中止:', error.message);
   }
 };
 
@@ -217,7 +209,6 @@ export const generateSummary = async (articleContent, { onData, onError, onCompl
       const now = Date.now();
       // 如果超过60秒没有活动，认为连接可能已断开
       if (now - lastActivityTime > 60000 && !done) {
-        console.log("摘要生成请求长时间无响应，可能已断开");
         clearInterval(heartbeatInterval);
         // 不立即中断，给予更多时间让连接恢复
       }
@@ -244,9 +235,6 @@ export const generateSummary = async (articleContent, { onData, onError, onCompl
         const chunk = decoder.decode(value, { stream: true });
         buffer += chunk;
 
-        console.log("收到数据块:", chunk); // 调试日志
-        console.log("当前缓冲区:", buffer); // 调试日志
-
         // 查找完整的SSE消息（以空行分隔）
         let boundaryIndex;
         while ((boundaryIndex = buffer.indexOf('\n\n')) !== -1) {
@@ -267,8 +255,6 @@ export const generateSummary = async (articleContent, { onData, onError, onCompl
 
     // 处理单个SSE消息的函数
     function processSSEMessage(sseMessage) {
-      console.log("处理摘要SSE消息:", sseMessage);
-
       // 从消息中分离出 data 数据
       let dataContent = null;
 
@@ -300,7 +286,7 @@ export const generateSummary = async (articleContent, { onData, onError, onCompl
         // 处理正常数据
         onData && onData(parsedData.content);
       } catch (error) {
-        console.error("解析数据失败:", error);
+        console.error("Failed to parse data:", error);
       }
     }
   } catch (error) {
@@ -309,8 +295,6 @@ export const generateSummary = async (articleContent, { onData, onError, onCompl
       onError && onError(error);
       throw error;
     }
-    // 如果是AbortError，只需捕获但不调用错误回调，避免显示不必要的错误提示
-    console.log('请求被中止:', error.message);
   }
 };
 

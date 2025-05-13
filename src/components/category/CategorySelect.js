@@ -30,7 +30,7 @@ const CategorySelect = ({
           setCategories(response.data.items);
         }
       } catch (error) {
-        console.error('获取分类列表失败:', error);
+        console.error('Failed to get category list:', error);
         message.error('获取分类列表失败');
       } finally {
         setLoading(false);
@@ -69,7 +69,7 @@ const CategorySelect = ({
               setInternalValue(value.map(id => ({ key: id, value: id, label: `分类 ${id}` })));
             }
           } catch (error) {
-            console.error('获取分类信息失败:', error);
+            console.error('Failed to get category information:', error);
             setInternalValue(value.map(id => ({ key: id, value: id, label: `分类 ${id}` })));
           }
         }
@@ -87,7 +87,7 @@ const CategorySelect = ({
               setInternalValue({ key: value, value, label: `分类 ${value}` });
             }
           } catch (error) {
-            console.error(`获取分类 ID ${value} 信息失败:`, error);
+            console.error(`Failed to get category ID ${value} information:`, error);
             setInternalValue({ key: value, value, label: `分类 ${value}` });
           }
         }
@@ -122,8 +122,6 @@ const CategorySelect = ({
 
   // 处理值变化
   const handleChange = (newValue) => {
-    console.log('CategorySelect handleChange:', newValue);
-
     // 如果是多选模式，则转换为 ID 数组
     if (mode === 'multiple') {
       const ids = newValue.map(item => item.value);
@@ -134,11 +132,6 @@ const CategorySelect = ({
       onChange(newValue ? newValue.value : undefined);
     }
   };
-
-  // 添加调试日志
-  console.log('CategorySelect value:', value);
-  console.log('CategorySelect internalValue:', internalValue);
-  console.log('CategorySelect categories:', categories);
 
   return (
     <Select

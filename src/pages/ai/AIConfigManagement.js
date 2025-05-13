@@ -137,7 +137,7 @@ const AIConfigManagement = () => {
         setStatsData(statsResponse.data);
       }
     } catch (error) {
-      console.error('获取AI模型数据失败:', error);
+      console.error('Failed to fetch AI model data:', error);
       message.error('获取AI模型数据失败');
     } finally {
       setLoading(false);
@@ -283,7 +283,7 @@ const AIConfigManagement = () => {
 
       fetchData(pagination.current, pagination.pageSize, sortParams, queryParams);
     } catch (error) {
-      console.error('保存AI模型配置失败:', error);
+      console.error('Failed to save AI model config:', error);
 
       // 错误处理
       if (error.code === 409 || (error.response && error.response.status === 409)) {
@@ -310,7 +310,7 @@ const AIConfigManagement = () => {
 
       fetchData(pagination.current, pagination.pageSize, sortParams, queryParams);
     } catch (error) {
-      console.error('删除AI模型配置失败:', error);
+      console.error('Failed to delete AI model config:', error);
       message.error('删除AI模型配置失败');
     }
   };
@@ -331,7 +331,7 @@ const AIConfigManagement = () => {
 
       fetchData(pagination.current, pagination.pageSize, sortParams, queryParams);
     } catch (error) {
-      console.error('重置模型统计数据失败:', error);
+      console.error('Failed to reset model statistics data:', error);
       message.error('重置模型统计数据失败');
     }
   };
@@ -357,7 +357,7 @@ const AIConfigManagement = () => {
 
           fetchData(pagination.current, pagination.pageSize, sortParams, queryParams);
         } catch (error) {
-          console.error('重置所有模型统计数据失败:', error);
+          console.error('Failed to reset all model statistics data:', error);
           message.error('重置所有模型统计数据失败');
         }
       },

@@ -85,7 +85,7 @@ const ArticleEditor = ({
         message.error('封面上传失败');
       }
     } catch (error) {
-      console.error('封面上传失败:', error);
+      console.error('Cover upload failed:', error);
       message.error('封面上传失败');
     } finally {
       setCoverLoading(false);

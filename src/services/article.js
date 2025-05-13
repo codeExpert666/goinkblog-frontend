@@ -2,8 +2,6 @@ import api from './api';
 
 // 获取（搜索）文章列表
 export const getArticles = (params = {}) => {
-  // 调试日志：查看发送的参数
-  console.log('发送文章列表请求参数:', params);
   return api.get('/api/blog/articles', { params });
 };
 

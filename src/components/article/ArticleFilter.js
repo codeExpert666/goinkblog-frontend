@@ -39,9 +39,6 @@ const ArticleFilter = ({
       return acc;
     }, {});
 
-    // 调试日志
-    console.log('筛选条件:', filters);
-
     onSearch(filters);
   }, [onSearch]);
 
@@ -92,14 +89,14 @@ const ArticleFilter = ({
                 handleSearch(values);
               }
             } else {
-              console.warn(`未找到名为 "${categoryName}" 的分类`);
+              console.warn(`Category not found: "${categoryName}"`);
               form.setFieldsValue(values);
             }
           } else {
             form.setFieldsValue(values);
           }
         } catch (error) {
-          console.error('获取分类列表失败:', error);
+          console.error('Failed to fetch category list:', error);
           form.setFieldsValue(values);
         }
       };

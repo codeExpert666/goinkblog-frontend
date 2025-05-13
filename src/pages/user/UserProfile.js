@@ -181,7 +181,7 @@ const UserProfile = () => {
         setCategoryDistribution(categoryResponse.data);
       }
     } catch (error) {
-      console.error('获取用户统计信息失败:', error);
+      console.error('Failed to fetch user statistics:', error);
       message.error('获取统计信息失败');
     } finally {
       setLoadingStats(false);
@@ -204,7 +204,7 @@ const UserProfile = () => {
         setVisitTrend(formattedData);
       }
     } catch (error) {
-      console.error('获取访问量趋势数据失败:', error);
+      console.error('Failed to fetch visit trend data:', error);
       message.error('获取访问量趋势数据失败');
     } finally {
       setLoadingVisits(false);
@@ -249,7 +249,7 @@ const UserProfile = () => {
         });
       }
     } catch (error) {
-      console.error('获取文章列表失败:', error);
+      console.error('Failed to get article list:', error);
       message.error('获取文章列表失败');
     } finally {
       // 只关闭当前选项卡对应的loading状态
@@ -290,7 +290,7 @@ const UserProfile = () => {
         published: publishedResponse.data?.total || 0
       });
     } catch (error) {
-      console.error('获取文章计数失败:', error);
+      console.error('Failed to get article counts:', error);
     }
   }, []);
 
@@ -332,7 +332,7 @@ const UserProfile = () => {
         setEditMode(false);
       }
     } catch (error) {
-      console.error('更新个人资料失败:', error);
+      console.error('Failed to update user profile:', error);
       message.error(error.message || '更新个人资料失败，请重试');
       resetFormToUserData();
     } finally {
@@ -384,7 +384,7 @@ const UserProfile = () => {
         message.success('头像上传成功');
       }
     } catch (error) {
-      console.error('头像上传失败:', error);
+      console.error('Failed to upload avatar:', error);
       onError(error);
       message.error('头像上传失败，请重试');
       setAvatarUrl(user.avatar);
@@ -412,7 +412,7 @@ const UserProfile = () => {
       fetchArticleCounts();
       fetchArticles(articleTab, { page: paginationRef.current.current });
     } catch (error) {
-      console.error('发布文章失败:', error);
+      console.error('Failed to publish article:', error);
       message.error('发布文章失败');
     }
   };
@@ -430,7 +430,7 @@ const UserProfile = () => {
       fetchArticleCounts();
       fetchArticles(articleTab, { page: paginationRef.current.current });
     } catch (error) {
-      console.error('删除草稿失败:', error);
+      console.error('Failed to delete article draft:', error);
       message.error('删除草稿失败');
     }
   };
@@ -461,7 +461,7 @@ const UserProfile = () => {
         message.success(response.data.interacted ? '点赞成功' : '已取消点赞');
       }
     } catch (error) {
-      console.error('点赞操作失败:', error);
+      console.error('Failed to like the article:', error);
       message.error('点赞操作失败');
     }
   };
@@ -492,7 +492,7 @@ const UserProfile = () => {
         message.success(response.data.interacted ? '收藏成功' : '已取消收藏');
       }
     } catch (error) {
-      console.error('收藏操作失败:', error);
+      console.error('Failed to favorite the article:', error);
       message.error('收藏操作失败');
     }
   };

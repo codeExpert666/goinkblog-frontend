@@ -25,7 +25,7 @@ const categoryCache = {
       }
       return null;
     } catch (error) {
-      console.error(`获取分类(ID:${categoryId})数据失败:`, error);
+      console.error(`Failed to fetch category (ID:${categoryId}) data:`, error);
       return null;
     }
   },

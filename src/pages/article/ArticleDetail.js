@@ -77,7 +77,7 @@ const ArticleDetail = () => {
         navigate('/articles');
       }
     } catch (error) {
-      console.error('获取文章详情失败:', error);
+      console.error('Failed to fetch article details:', error);
       message.error('获取文章详情失败');
       navigate('/articles');
     } finally {
@@ -133,7 +133,7 @@ const ArticleDetail = () => {
         message.success(response.data.interacted ? '点赞成功' : '已取消点赞');
       }
     } catch (error) {
-      console.error('点赞操作失败:', error);
+      console.error('Failed to like the article:', error);
       message.error('点赞操作失败');
     } finally {
       setActionLoading(prev => ({ ...prev, like: false }));
@@ -168,7 +168,7 @@ const ArticleDetail = () => {
         message.success(response.data.interacted ? '收藏成功' : '已取消收藏');
       }
     } catch (error) {
-      console.error('收藏操作失败:', error);
+      console.error('Failed to favorite the article:', error);
       message.error('收藏操作失败');
     } finally {
       setActionLoading(prev => ({ ...prev, favorite: false }));
@@ -191,7 +191,7 @@ const ArticleDetail = () => {
           message.success('文章删除成功');
           navigate('/articles');
         } catch (error) {
-          console.error('删除文章失败:', error);
+          console.error('Failed to delete the article:', error);
           message.error('删除文章失败');
         } finally {
           setActionLoading(prev => ({ ...prev, delete: false }));
@@ -216,7 +216,7 @@ const ArticleDetail = () => {
           // 撤回成功后导航到用户的草稿箱页面
           navigate('/profile?tab=draft');
         } catch (error) {
-          console.error('撤回文章失败:', error);
+          console.error('Failed to withdraw the article:', error);
           message.error('撤回文章失败');
         } finally {
           setActionLoading(prev => ({ ...prev, unpublish: false }));
@@ -385,7 +385,6 @@ const ArticleDetail = () => {
                           content={content} 
                           onRendered={(toc) => {
                             // 目前不需要处理目录，但保留接口以备后用
-                            console.log('文章内容渲染完成，生成的目录：', toc);
                             setTimeout(() => {
                               setMarkdownLoading(false);
                             }, 100); // 添加轻微延迟确保渲染完成

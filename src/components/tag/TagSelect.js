@@ -150,7 +150,7 @@ const TagSelect = ({
             // setInternalValue(selectedTags.map(id => ({ key: id, value: id, label: `标签 ${id}` })));
           }
         } catch (error) {
-          console.error('获取标签信息失败:', error);
+          console.error('Failed to get tag infomation:', error);
           setInternalValue(selectedTags.map(id => ({ key: id, value: id, label: `${id}` })));
           // setInternalValue(selectedTags.map(id => ({ key: id, value: id, label: `标签 ${id}` })));
         }
@@ -184,7 +184,7 @@ const TagSelect = ({
           tagCache.addTags(response.data);
         }
       } catch (error) {
-        console.error('获取标签失败:', error);
+        console.error('Failed to get tag:', error);
         message.error('获取标签列表失败');
       } finally {
         setLoading(false);
@@ -242,8 +242,6 @@ const TagSelect = ({
 
   // 处理标签选择变更
   const handleChange = async (newValue) => {
-    console.log('TagSelect handleChange:', newValue);
-
     // 提取ID值
     let selectedValues = [];
 
@@ -277,7 +275,7 @@ const TagSelect = ({
           message.success(`标签"${newTag.name}"创建成功`);
         }
       } catch (error) {
-        console.error('创建标签失败:', error);
+        console.error('Failed to create tag:', error);
         message.error('创建标签失败');
       }
     }

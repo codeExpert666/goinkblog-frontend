@@ -37,10 +37,9 @@ function App() {
       if (response.data && response.data.items) {
         // 将分类数据添加到缓存
         categoryCache.addCategories(response.data.items);
-        console.log('分类数据预加载成功，共', response.data.items.length, '个分类');
       }
     } catch (error) {
-      console.error('预加载分类数据失败:', error);
+      console.error('Failed to preload categories:', error);
     }
   };
 
@@ -62,7 +61,6 @@ function App() {
       if (response.data) {
         // 直接使用后端返回的用户信息，包括avatar URL
         setUser(response.data);
-        console.log('用户信息加载成功，头像URL:', response.data.avatar);
       }
     } catch (error) {
       console.error('Failed to fetch current user:', error);

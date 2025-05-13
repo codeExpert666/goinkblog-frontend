@@ -127,7 +127,7 @@ const TagManagement = () => {
         });
       }
     } catch (error) {
-      console.error('获取标签列表失败:', error);
+      console.error('Failed to get tag list:', error);
       message.error('获取标签列表失败');
     } finally {
       setLoading(false);
@@ -310,7 +310,7 @@ const TagManagement = () => {
 
       fetchTags(pagination.current, pagination.pageSize, sorters);
     } catch (error) {
-      console.error('保存标签失败:', error);
+      console.error('Failed to save tag:', error);
       message.error('保存标签失败');
     }
   };
@@ -355,7 +355,7 @@ const TagManagement = () => {
 
       fetchTags(pagination.current, pagination.pageSize, sorters);
     } catch (error) {
-      console.error('删除标签失败:', error);
+      console.error('Failed to delete tag:', error);
 
       // 如果是冲突错误（标签下有文章）
       if (error.code === 409 || (error.response && error.response.status === 409)) {

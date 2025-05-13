@@ -33,16 +33,14 @@ const markedOptions = {
     try {
       // 确保语言参数有效
       if (hljs.getLanguage(lang)) {
-        console.log(`应用高亮: ${lang}`);
         const result = hljs.highlight(code, { language: lang }).value;
         return result;
       } else {
         // 如果语言不支持，使用自动检测
-        console.log(`语言${lang}不支持，使用自动检测`);
         return hljs.highlightAuto(code).value;
       }
     } catch (e) {
-      console.error('代码高亮错误:', e);
+      console.error('Code highlighting error:', e);
       // 如果高亮失败，返回未处理的代码
       return code;
     }
@@ -139,12 +137,10 @@ const ArticleContentRenderer = ({ content = '', onRendered = null }) => {
     // 实现代码块功能和手动触发代码高亮
     const setupCodeHighlight = () => {
       const codeBlocks = document.querySelectorAll('.article-markdown-content pre code');
-      console.log(`找到 ${codeBlocks.length} 个代码块`);
 
       // 直接调用 hljs 手动高亮所有代码块
       const applyManualHighlight = () => {
         if (codeBlocks.length === 0) {
-          console.log('未找到代码块');
           return;
         }
 
@@ -161,31 +157,25 @@ const ArticleContentRenderer = ({ content = '', onRendered = null }) => {
             }
           }
 
-          console.log(`代码块 ${index + 1}，语言: ${language || '未指定'}`);
-
           // 强制重新应用高亮
           try {
             const originalCode = codeBlock.textContent || '';
             // 如果没有内容，跳过
             if (!originalCode.trim()) {
-              console.log('代码块为空，跳过高亮');
               return;
             }
 
             let result;
             if (language && hljs.getLanguage(language)) {
               // 使用指定语言
-              console.log(`使用指定语言高亮: ${language}`);
               result = hljs.highlight(originalCode, { language }).value;
             } else {
               // 自动检测语言
-              console.log('使用自动检测高亮');
               result = hljs.highlightAuto(originalCode).value;
             }
 
             // 强制更新代码块内容
             codeBlock.innerHTML = result;
-            console.log('高亮应用成功');
 
             // 为父元素添加语言标识类以便样式应用
             const preElement = codeBlock.parentElement;
@@ -193,7 +183,7 @@ const ArticleContentRenderer = ({ content = '', onRendered = null }) => {
               preElement.classList.add(`language-${language}`);
             }
           } catch (e) {
-            console.error('手动高亮代码失败:', e);
+            console.error('Manual code highlighting failed:', e);
           }
         });
 
