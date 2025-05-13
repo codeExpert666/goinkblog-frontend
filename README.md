@@ -1,4 +1,4 @@
-# GoInk Blog 前端项目
+# GoInk Blog 前端
 
 GoInk Blog 是一个轻量级但功能完备的智能博客系统，基于 React 和 Ant Design 构建，提供现代化的用户界面和丰富的博客功能。
 
