@@ -126,6 +126,28 @@ npm run build
 
 构建后的文件将生成在 `build` 目录中，可以部署到任何静态文件服务器。
 
+### 使用Docker部署
+
+项目提供了Docker支持，可以使用Docker快速部署应用。
+
+#### 先决条件
+
+- 安装 [Docker](https://www.docker.com/get-started)
+
+#### 构建Docker镜像
+
+```bash
+docker build -t goinkblog-frontend .
+```
+
+#### 运行Docker容器
+
+```bash
+docker run -d -p 80:80 goinkblog-frontend
+```
+
+应用将在Docker容器中运行，可通过 [http://localhost](http://localhost) 访问。
+
 ## 主要功能模块
 
 ### 用户认证
