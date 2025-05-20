@@ -600,7 +600,7 @@ const ArticlesPage = () => {
             </div>
           ) : (
             <div className="hot-tags-container" style={{
-              padding: '20px 0',
+              padding: '10px 0',
               position: 'relative',
               // minHeight: '180px',
               perspective: '1000px',
